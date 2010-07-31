@@ -1,0 +1,5 @@
+adapter: mysql
+database: annuaire_development
+username: root
+password: momMotDePasse
+host: localhost
