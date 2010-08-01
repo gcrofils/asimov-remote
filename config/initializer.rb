@@ -39,12 +39,12 @@ module Asimov
     def initialize_database
       require 'rubygems'
       require 'active_record'
-      ActiveRecord::Base.establish_connection(configuration.database_configuration)
+      ActiveRecord::Base.establish_connection(configuration.database_configuration) unless configuration.database_configuration.nil?
     end
     
     def initialize_settings
       require 'settings'
-      Settings.configuration = configuration.settings_configuration
+      Settings.configuration = configuration.settings_configuration unless configuration.settings_configuration.nil?
     end
     
 
@@ -68,12 +68,12 @@ module Asimov
     
     def database_configuration
       require 'erb'
-      YAML::load(ERB.new(IO.read(database_configuration_file)).result)
+      YAML::load(ERB.new(IO.read(database_configuration_file)).result) if File.exist?(database_configuration_file)
     end
     
     def settings_configuration
       require 'erb'
-      YAML::load(ERB.new(IO.read(settings_configuration_file)).result)
+      YAML::load(ERB.new(IO.read(settings_configuration_file)).result) if File.exist?(settings_configuration_file)
     end
 
     
