@@ -28,6 +28,7 @@ module Asimov
     def process
       set_load_path
       initialize_database
+      initialize_settings
     end
     
     def set_load_path
@@ -41,7 +42,10 @@ module Asimov
       ActiveRecord::Base.establish_connection(configuration.database_configuration)
     end
     
-
+    def initialize_settings
+      require 'settings'
+      Settings.configuration = configuration.settings_configuration
+    end
     
 
     
