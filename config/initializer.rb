@@ -39,6 +39,7 @@ module Asimov
     def initialize_database
       require 'rubygems'
       require 'active_record'
+      ActiveRecord::Base.configurations = configuration.database_configuration
       ActiveRecord::Base.establish_connection(configuration.database_configuration) unless configuration.database_configuration.nil?
     end
     
