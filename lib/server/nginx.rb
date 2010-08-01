@@ -19,7 +19,7 @@ class Nginx < Server::Base
      %w[ site_handler site_port site_host site_www_root_path ].each {|option| conf = conf.gsub("<#{option}>", configuration[option.to_sym].to_s)}
      nginx_conf_file = File.join(configuration[:sites_available_path], configuration[:site_handler])
      File.open(nginx_conf_file, 'w') {|f| f.write(conf) }
-     FileUtils.rm File.join(configuration[:sites_enabled_path], '*')
+     FileUtils.rm Dir.glob(File.join(configuration[:sites_enabled_path], '*'))
      FileUtils.ln_s nginx_conf_file, File.join(configuration[:sites_enabled_path], configuration[:site_handler])
   end
 end
