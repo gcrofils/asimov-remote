@@ -1,13 +1,14 @@
 module Server
   class Nginx < Server::Base
-    attr_accessor :sites_enabled_path
-    attr_accessor :site_handler
-    attr_accessor :site_port
-    attr_accessor :site_host
-    attr_accessor :site_www_root_path
     
     def initialize
-      @sites_enabled_path = "/etc/nginx/sites-enabled"
+      @default_settings = {
+          :site_enabled_path => "/etc/nginx/sites-enabled",
+          :site_handler => '',
+          :site_port => '80',
+          :site_host => '',
+          :site_root_path => ''
+      }
     end
   end
 end
