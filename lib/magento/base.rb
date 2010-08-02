@@ -51,13 +51,16 @@ module Mage
         attributes.collect!{|attr| attr.dehumanize}
         datas.each do |row|
           obj = self.class.new
+          i = 0
           row.each do |col|
             begin
-              obj.send("#{attributes[row.index(col)]}=".to_sym ,col.strip)
+              obj.send("#{attributes[i]}=".to_sym ,col.nil? ? nil : col.strip)
             rescue NoMethodError
-              puts "#{self.class.name} Undefined attribute #{attributes[row.index(col)]}"
+              puts "#{self.class.name} Undefined attribute #{attributes[row.index(col)]} >#{col.strip unless col.nil?}<"
             end
+            i += 1
           end
+          puts obj.inspect
           all << obj
         end
       rescue Exception => e
