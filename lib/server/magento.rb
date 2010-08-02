@@ -74,10 +74,12 @@ class Magento < Server::Base
   
   def install_modules
     if c.modules.size > 0
-       puts "cd #{c.www_root_path}"
-       puts "./pear mage-setup ."
-    end
-    c.modules.each {|m| puts "./pear install #{m}"}
+       cmd = "cd #{c.www_root_path} \n"
+       cmd += "./pear mage-setup . \n"
+       c.modules.each {|m| cmd += "./pear install #{m} \n"}
+       system cmd
+   end
+
   end
   
   def load_data
