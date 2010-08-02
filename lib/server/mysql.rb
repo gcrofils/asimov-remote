@@ -12,7 +12,7 @@ class Mysql
       cmd = " CREATE DATABASE #{conf[:database]}  SET utf8 COLLATE utf8_bin;
             CREATE USER '#{conf[:username]}'@'localhost' IDENTIFIED BY '#{conf[:password]}';
             GRANT ALL PRIVILEGES on #{conf[:database]}.* to #{conf[:username]}@localhost IDENTIFIED BY '#{conf[:password]}'"
-      tf = TempFile.new('mysql_')
+      tf = Tempfile.new('mysql_')
       tf.puts cmd
       tf.flush
       system("mysql -hlocalhost -uroot -p#{mysql_root_password} < #{tf.path}")
