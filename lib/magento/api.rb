@@ -82,7 +82,7 @@ END_RULES
   
   def create_role
     role = ApiRole.find_by_role_name(role_name) || ApiRole.new
-    role.update_attributes (
+    role.update_attributes(
       :role_id => 1, 
       :parent_id => 0, 
       :tree_level => 1, 
@@ -99,7 +99,7 @@ END_RULES
      @password  = options[:password]
      
      user = ApiUser.find_by_username(user_name) || ApiUser.new
-     user.update_attributes (
+     user.update_attributes(
      :firstname => first_name, 
      :lastname => last_name, 
      :email => email, 
@@ -116,7 +116,7 @@ END_RULES
   def create_rules
     rules.each do |permission, resource_id|
       rule = ApiRule.find(:first, :condition => {:role_id => role.id, :resource_id => resource_id.strip }) || ApiRule.new
-      rule.update_attributes (
+      rule.update_attributes(
         :role_id => role.id, 
         :resource_id => resource_id.strip, 
         :privileges => '', 
