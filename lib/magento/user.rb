@@ -28,7 +28,7 @@ module Mage
     end
     
     def user_create!
-      mage_user = AdminUser.find_by_username(username) || AdminUser.new
+      mage_user = AdminUser.find_by_username(user_name) || AdminUser.new
       mage_user.update_attributes(
         :firstname  => first_name, 
         :lastname   => last_name, 
