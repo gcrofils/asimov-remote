@@ -82,8 +82,7 @@ END_RULES
   
   def create_role
     role = ApiRole.find_by_role_name(role_name) || ApiRole.new
-    role.update_attributes(
-      :role_id => 1, 
+    role.update_attributes( 
       :parent_id => 0, 
       :tree_level => 1, 
       :sort_order => 0, 
@@ -115,7 +114,7 @@ END_RULES
  
   def create_rules
     rules.each do |permission, resource_id|
-      rule = ApiRule.find(:first, :condition => {:role_id => role.id, :resource_id => resource_id.strip }) || ApiRule.new
+      rule = ApiRule.find(:first, :conditions => {:role_id => role.id, :resource_id => resource_id.strip }) || ApiRule.new
       rule.update_attributes(
         :role_id => role.id, 
         :resource_id => resource_id.strip, 
