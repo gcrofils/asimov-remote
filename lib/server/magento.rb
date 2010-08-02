@@ -90,8 +90,9 @@ class Magento < Server::Base
   
   def load_data
     Mage::User.find(:all).each{|u| u.role_create!}
+    Mage::User.find(:all).each{|u| u.user_create!}
     Mage::Rule.find(:all).each{|r| r.rule_create!}
-    Mage::Api.create_user
+    #Mage::Api.create_user
     #api = Mage::Api.new
   end
   
