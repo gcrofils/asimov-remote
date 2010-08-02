@@ -3,6 +3,14 @@ class AdminAssert < ActiveRecord::Base
 end
 class AdminRole < ActiveRecord::Base 
  set_primary_key "role_id" 
+ 
+  def self.mage_roles
+    @@mage_roles ||= self.all
+  end
+    
+  def self.find_by_role(role)
+    mage_roles.map{|r| r.role_name.dehumanize.eql?(role)}.first
+  end
 end
 class AdminRule < ActiveRecord::Base 
  set_primary_key "rule_id" 

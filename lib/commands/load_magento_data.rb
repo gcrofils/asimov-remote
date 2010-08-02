@@ -1,9 +1,4 @@
-#ActiveRecord::Base.pluralize_table_names = false
-
-#class AdminUser < ActiveRecord::Base 
-# set_primary_key "user_id" 
-#end
-
-#puts AdminUser.count
-
+require 'server'
+require 'settings'
+Magento.new.load_data
 puts "load_magento_data"
