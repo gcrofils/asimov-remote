@@ -39,6 +39,7 @@ class Magento < Server::Base
   def install
     install_core
     install_modules
+    cleaning
   end
 
   def install_core
@@ -77,10 +78,15 @@ class Magento < Server::Base
        cmd = "cd #{c.www_root_path} \n"
        cmd += "./pear mage-setup . \n"
        c.modules.each {|m| cmd += "./pear install #{m} \n"}
+       cmd += "./pear clear-cache \n"
        system cmd
    end
-
-  end
+ end
+ 
+ def cleaning
+   FileUtils.rm_rf File.join(c.www_root_path, 'var', 'cache')
+   FileUtils.rm_rf File.join(c.www_root_path, 'var', 'session')
+ end
   
   def load_data
     Mage::User.find(:all).each{|u| u.role_create!}
