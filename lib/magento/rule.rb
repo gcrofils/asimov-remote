@@ -17,7 +17,7 @@ module Mage
     
     def rule_create!
       roles.each do |role|
-        mage_role = AdminRole.find_by_role(role)
+        mage_role = AdminRole.find_by_role_name(role)
         unless mage_role.nil?
           mage_rule = AdminRule.find(:first, :conditions => {:role_id => mage_role.id, :resource_id => rule}) || AdminRule.new
           mage_rule.update_attributes(
