@@ -64,9 +64,8 @@ class Magento < Server::Base
       --admin_lastname \"#{admin.last_name}\"
       --admin_email \"#{admin.email}\"
       --admin_username \"#{admin.user_name}\"
-      --admin_password \"#{admin.password}\"".gsub("\n", "\\")
+      --admin_password \"#{admin.password}\"".gsub("\n", " \\\n")
       
-      puts cmd.gsub("\n", "\n \\")
       system cmd
       puts 'install magento OK'
       FileUtils.chown_R c.www_user, c.www_group, c.www_root_path
@@ -84,6 +83,7 @@ class Magento < Server::Base
   def load_data
     Mage::User.find(:all).each{|u| u.role_create!}
     Mage::Rule.find(:all).each{|r| r.rule_create!}
+    Mage::Api.create_user
     #api = Mage::Api.new
   end
   
