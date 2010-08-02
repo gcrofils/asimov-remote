@@ -45,7 +45,7 @@ module Mage
       mage_role = AdminRole.find_by_role_name(role)
       
       unless mage_role.nil?
-        user_role = AdminRole.find(:conditions => {:user_id => mage_user.id, :role_name => role}) || AdminRole.new
+        user_role = AdminRole.find(:first, :conditions => {:user_id => mage_user.id, :role_name => role}) || AdminRole.new
         user_role.update_attributes(
           :parent_id  => mage_role.id,
           :tree_level => 2,
