@@ -5,6 +5,8 @@ require 'magento/user'
 require 'pp'
 
 class Magento < Server::Base
+  
+  attr_accessor :api
 
   def default_settings
   {
@@ -16,6 +18,7 @@ class Magento < Server::Base
           :domain           => '',
           :spreadsheet_rules => '',
           :spreadsheet_users => '',
+          :spreadsheet_categories => '',
           :modules          => Array.new,
           :www_user         => 'www',
           :www_group        => 'www'
@@ -30,6 +33,7 @@ class Magento < Server::Base
   def initialize_user
     Mage::User.uri = "http://spreadsheets.google.com/pub?#{c.spreadsheet_users}&hl=fr&single=true&output=csv"
     Mage::Rule.uri = "http://spreadsheets.google.com/pub?#{c.spreadsheet_rules}&hl=fr&single=true&output=csv"
+    Mage::Category.uri = "http://spreadsheets.google.com/pub?#{c.spreadsheet_categories}&hl=fr&single=true&output=csv"
   end
 
   def users
@@ -92,8 +96,17 @@ class Magento < Server::Base
     Mage::User.find(:all).each{|u| u.role_create!}
     Mage::User.find(:all).each{|u| u.user_create!}
     Mage::Rule.find(:all).each{|r| r.rule_create!}
-    #Mage::Api.create_user
-    #api = Mage::Api.new
+    api = Mage::Api.new
+    api.create_role
+    api.create_user :user_name => admin.user_name, :password => admin.password
+    load_catalogue
+  end
+  
+  def load_catalogue
+    Mage::Categorie.find(:all).each do |c|
+      c.api = api
+      c.create!
+    end
   end
   
   private
