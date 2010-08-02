@@ -41,6 +41,7 @@ module Asimov
       require 'active_record'
       ActiveRecord::Base.configurations = configuration.database_configuration
       ActiveRecord::Base.establish_connection(configuration.database_configuration) unless configuration.database_configuration.nil?
+      ActiveRecord::Base.logger = Logger.new(File.open('/home/ubuntu/remote/log/database.log', 'a'))
     end
     
     def initialize_settings
