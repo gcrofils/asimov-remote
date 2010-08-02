@@ -2,6 +2,7 @@ require 'magento/magento_base'
 require 'magento/api'
 require 'magento/rule'
 require 'magento/user'
+require 'magento/category'
 require 'pp'
 
 class Magento < Server::Base
