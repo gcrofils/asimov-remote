@@ -28,7 +28,7 @@ module Mage
     end
     
     def user_create!
-      mage_user = AdminUser.find_by_username(username)
+      mage_user = AdminUser.find_by_username(username) || AdminUser.new
       mage_user.update_attributes(
         :firstname  => first_name, 
         :lastname   => last_name, 
@@ -42,10 +42,10 @@ module Mage
         :reload_acl_flag => 0, 
         :is_active => 1)
       
-      mage_role = AdminRole.find_by_role(role)
+      mage_role = AdminRole.find_by_role_name(role)
       
       unless mage_role.nil?
-        user_role = AdminRole.find(:conditions => {:user_id => mage_user.id, :role_name => role})
+        user_role = AdminRole.find(:conditions => {:user_id => mage_user.id, :role_name => role}) || AdminRole.new
         user_role.update_attributes(
           :parent_id  => mage_role.id,
           :tree_level => 2,
