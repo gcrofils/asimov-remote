@@ -68,7 +68,6 @@ module Asimov
         begin
           logger = ActiveSupport::BufferedLogger.new(configuration.log_path)
           logger.level = ActiveSupport::BufferedLogger.const_get(configuration.log_level.to_s.upcase)
-          puts logger.inspect
           if configuration.environment == "production"
             #logger.auto_flushing = false
             #logger.set_non_blocking_io
@@ -98,7 +97,8 @@ module Asimov
     
     def initialize
       self.load_paths                 = default_load_paths
-      self.server_configuration_file  = default_server_configuration_file
+      self.database_configuration_file  = default_database_configuration_file
+      self.settings_configuration_file  = default_settings_configuration_file
       self.ec2_configuration_file     = default_ec2_configuration_file
       self.log_path                   = default_log_path
       self.log_level                  = default_log_level
