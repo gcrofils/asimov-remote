@@ -104,7 +104,7 @@ class Magento < Server::Base
   end
   
   def load_catalogue
-    Mage::Categorie.find(:all).each do |c|
+    Mage::Category.find(:all).each do |c|
       c.api = api
       c.create!
     end

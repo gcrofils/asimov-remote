@@ -36,6 +36,7 @@ module Mage
       while i < retries
         begin
           i = i.succ
+          puts "READ #{uri}"
           break open(uri).read
         rescue
           sleep 2 unless i.eql?(retries)
@@ -58,9 +59,8 @@ module Mage
             rescue NoMethodError
               puts "#{self.class.name} Undefined attribute #{attributes[row.index(col)]} >#{col.strip unless col.nil?}<"
             end
-            i += 1
+            i = i.succ
           end
-          puts obj.inspect
           all << obj
         end
       rescue Exception => e

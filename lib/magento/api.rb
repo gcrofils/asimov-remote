@@ -68,7 +68,7 @@ module Mage
  deny  | sales/order/shipment/track
 END_RULES
 
-  attr_accessor :role_name, :first_name, :last_name, :email, :user_name, :password, :rules, :role, :user
+  attr_accessor :role_name, :first_name, :last_name, :email, :user_name, :password, :rules
 
   def initialize
       @role_name  = 'CatalogManager'
@@ -97,8 +97,8 @@ END_RULES
      @user_name = options[:user_name]
      @password  = options[:password]
      
-     user = ApiUser.find_by_username(user_name) || ApiUser.new
-     user.update_attributes(
+     @user = ApiUser.find_by_username(user_name) || ApiUser.new
+     @user.update_attributes(
      :firstname => first_name, 
      :lastname => last_name, 
      :email => email, 
