@@ -68,7 +68,7 @@ module Mage
  deny  | sales/order/shipment/track
 END_RULES
 
-  attr_accessor :role_name, :first_name, :last_name, :email, :user_name, :password, :rules, :apirole, :user
+  attr_accessor :role_name, :first_name, :last_name, :email, :user_name, :password, :rules, :role, :user
 
   def initialize
       @role_name  = 'CatalogManager'
@@ -81,8 +81,8 @@ END_RULES
   end
   
   def create_role
-    apirole = ApiRole.find_by_role_name(role_name) || ApiRole.new
-    apirole.update_attributes( 
+    @role = ApiRole.find_by_role_name(role_name) || ApiRole.new
+    @role.update_attributes( 
       :parent_id => 0, 
       :tree_level => 1, 
       :sort_order => 0, 
@@ -90,8 +90,6 @@ END_RULES
       :user_id => 0, 
       :role_name => role_name
      )
-     puts apirole.inspect
-     puts @apirole.inspect
      create_rules
   end
     
@@ -115,12 +113,11 @@ END_RULES
   end
  
   def create_rules
-    puts apirole.inspect
-     puts @apirole.inspect
+    puts @role.inspect
     rules.each do |permission, resource_id|
-      rule = ApiRule.find(:first, :conditions => {:role_id => apirole.id, :resource_id => resource_id.strip }) || ApiRule.new
+      rule = ApiRule.find(:first, :conditions => {:role_id => @role.id, :resource_id => resource_id.strip }) || ApiRule.new
       rule.update_attributes(
-        :role_id => apirole.id, 
+        :role_id => @role.id, 
         :resource_id => resource_id.strip, 
         :privileges => '', 
         :assert_id => 0, 
