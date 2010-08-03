@@ -99,7 +99,6 @@ module Asimov
       self.load_paths                 = default_load_paths
       self.database_configuration_file  = default_database_configuration_file
       self.settings_configuration_file  = default_settings_configuration_file
-      self.ec2_configuration_file     = default_ec2_configuration_file
       self.log_path                   = default_log_path
       self.log_level                  = default_log_level
     end
