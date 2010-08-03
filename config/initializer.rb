@@ -11,6 +11,16 @@ ASIMOV_ENV = (ENV['ASIMOV_ENV'] || DEFAULT_ENV).dup unless defined?(ASIMOV_ENV)
 
 
 module Asimov
+  
+   # The Configuration instance used to configure the Rails environment
+  def self.configuration
+    @@configuration
+  end
+
+  def self.configuration=(configuration)
+    @@configuration = configuration
+  end
+  
   class Initializer
     attr_reader :configuration
     
@@ -27,6 +37,7 @@ module Asimov
     
     def process
       set_load_path
+      initialize_logger
       initialize_database
       initialize_settings
     end
@@ -41,7 +52,7 @@ module Asimov
       require 'active_record'
       ActiveRecord::Base.configurations = configuration.database_configuration
       ActiveRecord::Base.establish_connection(configuration.database_configuration) unless configuration.database_configuration.nil?
-      ActiveRecord::Base.logger = Logger.new(File.open('/home/ubuntu/remote/log/database.log', 'a'))
+      ActiveRecord::Base.logger = ASIMOV_DEFAULT_LOGGER
     end
     
     def initialize_settings
@@ -49,7 +60,31 @@ module Asimov
       Settings.configuration = configuration.settings_configuration unless configuration.settings_configuration.nil?
     end
     
+    def initialize_logger
+      # if the environment has explicitly defined a logger, use it
+      return if defined?(ASIMOV_DEFAULT_LOGGER)
+      
+      unless logger = configuration.logger
+        begin
+          logger = ActiveSupport::BufferedLogger.new(configuration.log_path)
+          logger.level = ActiveSupport::BufferedLogger.const_get(configuration.log_level.to_s.upcase)
+          puts logger.inspect
+          if configuration.environment == "production"
+            #logger.auto_flushing = false
+            #logger.set_non_blocking_io
+          end
+        rescue StandardError => e
+            logger = ActiveSupport::BufferedLogger.new(STDERR)
+            logger.level = ActiveSupport::BufferedLogger::WARN
+            logger.warn(
+              "Asimov Error: Unable to access log file. Please ensure that #{configuration.log_path} exists and is chmod 0666. " +
+              "The log level has been raised to WARN and the output directed to STDERR until the problem is fixed."
+             )
+        end
+      end
 
+      silence_warnings { Object.const_set "ASIMOV_DEFAULT_LOGGER", logger }
+    end
     
   end
   
@@ -57,11 +92,16 @@ module Asimov
     attr_accessor :load_paths
     attr_accessor :database_configuration_file
     attr_accessor :settings_configuration_file
+    attr_accessor :log_level
+    attr_accessor :log_path
+    attr_accessor :logger
     
     def initialize
-      @load_paths                   = default_load_paths
-      @database_configuration_file  = default_database_configuration_file
-      @settings_configuration_file  = default_settings_configuration_file
+      self.load_paths                 = default_load_paths
+      self.server_configuration_file  = default_server_configuration_file
+      self.ec2_configuration_file     = default_ec2_configuration_file
+      self.log_path                   = default_log_path
+      self.log_level                  = default_log_level
     end
     
     def environment
@@ -102,6 +142,14 @@ module Asimov
     
     def default_settings_configuration_file
       File.join(root_path, 'config', 'settings.yml')
+    end
+    
+    def default_log_path
+      File.join(root_path, 'log', "#{environment}.log")
+    end
+
+    def default_log_level
+      environment == 'production' ? :info : :debug
     end
     
   end
