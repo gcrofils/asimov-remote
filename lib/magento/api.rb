@@ -113,7 +113,6 @@ END_RULES
   end
  
   def create_rules
-    puts @role.inspect
     rules.each do |permission, resource_id|
       rule = ApiRule.find(:first, :conditions => {:role_id => @role.id, :resource_id => resource_id.strip }) || ApiRule.new
       rule.update_attributes(
