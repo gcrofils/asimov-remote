@@ -32,20 +32,21 @@ module Mage
     end
     
     def grab_remote_data(retries=3)
+      logger.info "READ #{uri} #{self.class.name}"
       i = 0
       while i < retries
         begin
           i = i.succ
-          puts "READ #{uri}"
           break open(uri).read
-        rescue
+        rescue Exception => e
+          logger.warning "Remote Data failed ! with exception #{e} #{"will not retry." if i.eql?(retries)}"
           sleep 2 unless i.eql?(retries)
         end
       end
     end
     
     def parseCSV(data)
-      all = Array.new
+      ret = Array.new
       begin
         datas = CSV.parse(data)
         attributes = datas.shift
@@ -57,16 +58,16 @@ module Mage
             begin
               obj.send("#{attributes[i]}=".to_sym ,col.nil? ? nil : col.strip)
             rescue NoMethodError
-              puts "#{self.class.name} Undefined attribute #{attributes[row.index(col)]} >#{col.strip unless col.nil?}<"
+              logger.warning "#{self.class.name} Undefined attribute #{attributes[row.index(col)]} >#{col.strip unless col.nil?}<"
             end
             i = i.succ
           end
-          all << obj
+          ret << obj
         end
       rescue Exception => e
         puts e.to_s
       end
-      all
+      ret
     end
     
   end
