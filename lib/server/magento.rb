@@ -73,7 +73,7 @@ class Magento < Server::Base
       --admin_password \"#{admin.password}\"".gsub("\n", " \\\n")
       
       system cmd
-      puts 'install magento OK'
+      logger.info 'install magento OK'
       FileUtils.chown_R c.www_user, c.www_group, c.www_root_path
 
   end

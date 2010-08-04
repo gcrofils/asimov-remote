@@ -23,6 +23,7 @@ module Mage
     end  
     
     def all
+      logger.debug " #{self.class.name} ==> all"
       @all ||= load_remote
     end
     
