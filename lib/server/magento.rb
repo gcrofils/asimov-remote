@@ -121,6 +121,6 @@ class Magento < Server::Base
   end
   
   def admin
-    Mage::User.find(:admin).first
+    @admin ||= Mage::User.find(:admin).first
   end
 end
