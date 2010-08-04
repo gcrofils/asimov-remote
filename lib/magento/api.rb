@@ -1,4 +1,92 @@
 require 'magento/base'
+require 'savon'
+
+# catalog_category_assign_product
+# catalog_category_assigned_products
+# catalog_category_attribute_current_store
+# catalog_category_attribute_list
+# catalog_category_attribute_options
+# catalog_category_create
+# catalog_category_current_store
+# catalog_category_delete
+# catalog_category_info
+# catalog_category_level
+# catalog_category_move
+# catalog_category_remove_product
+# catalog_category_tree
+# catalog_category_update
+# catalog_category_update_product
+# catalog_inventory_stock_item_list
+# catalog_inventory_stock_item_update
+# catalog_product_attribute_current_store
+# catalog_product_attribute_list
+# catalog_product_attribute_media_create
+# catalog_product_attribute_media_current_store
+# catalog_product_attribute_media_info
+# catalog_product_attribute_media_list
+# catalog_product_attribute_media_remove
+# catalog_product_attribute_media_types
+# catalog_product_attribute_media_update
+# catalog_product_attribute_options
+# catalog_product_attribute_set_list
+# catalog_product_attribute_tier_price_info
+# catalog_product_attribute_tier_price_update
+# catalog_product_create
+# catalog_product_current_store
+# catalog_product_delete
+# catalog_product_get_special_price
+# catalog_product_info
+# catalog_product_link_assign
+# catalog_product_link_attributes
+# catalog_product_link_list
+# catalog_product_link_remove
+# catalog_product_link_types
+# catalog_product_link_update
+# catalog_product_list
+# catalog_product_set_special_price
+# catalog_product_type_list
+# catalog_product_update
+# customer_address_create
+# customer_address_delete
+# customer_address_info
+# customer_address_list
+# customer_address_update
+# customer_customer_create
+# customer_customer_delete
+# customer_customer_info
+# customer_customer_list
+# customer_customer_update
+# customer_group_list
+# directory_country_list
+# directory_region_list
+# end_session
+# global_faults
+# login
+# resource_faults
+# resources
+# sales_order_add_comment
+# sales_order_cancel
+# sales_order_hold
+# sales_order_info
+# sales_order_invoice_add_comment
+# sales_order_invoice_cancel
+# sales_order_invoice_capture
+# sales_order_invoice_create
+# sales_order_invoice_info
+# sales_order_invoice_list
+# sales_order_invoice_void
+# sales_order_list
+# sales_order_shipment_add_comment
+# sales_order_shipment_add_track
+# sales_order_shipment_create
+# sales_order_shipment_get_carriers
+# sales_order_shipment_info
+# sales_order_shipment_list
+# sales_order_shipment_remove_track
+# sales_order_unhold
+# start_session
+
+
 
 module Mage
   class Api
@@ -69,6 +157,20 @@ module Mage
 END_RULES
 
   attr_accessor :role_name, :first_name, :last_name, :email, :user_name, :password, :rules
+  
+  def self.test
+    client = Savon::Client.new "http://delhaye.milizone.com/api/v2_soap?wsdl=1"
+    response = client.login { |soap| soap.body = { :username => "admin", :password => "secret09" } }
+    #client.wsdl.soap_actions.collect{|a| a.to_s}.sort.map{|a| puts "# #{a.to_sym}"}
+    #response = client.catalog_category_tree do |soap, wsse|
+    #wsse.username = "admin"
+    #wsse.password = "secret09"
+   #soap.body = { :id => 666 }
+ # end
+    session = response.to_hash[:login_response][:login_return]
+    puts "#{session} *********"
+    response = client.catalog_category_tree { |soap| soap.body = { :toto => 123} }
+  end
 
   def initialize
       @role_name  = 'CatalogManager'
@@ -109,6 +211,18 @@ END_RULES
      :lognum => 0, 
      :reload_acl_flag => 0, 
      :is_active => 1
+     )
+     
+     parent_id = ApiRole.find_by_role_name(role_name).id
+     
+     @role = ApiRole.find_by_role_name(user_name) || ApiRole.new
+     @role.update_attributes( 
+      :parent_id => parent_id, 
+      :tree_level => 2, 
+      :sort_order => 0, 
+      :role_type => 'U', 
+      :user_id => @user.id, 
+      :role_name => user_name
      )
   end
  
