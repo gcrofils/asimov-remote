@@ -1,4 +1,4 @@
-client = new SoapClient('http://delhaye.milizone.com/api/?wsdl');
+<?php client = new SoapClient('http://delhaye.milizone.com/api/?wsdl');
 // If soap isn't default use this link instead
 // http://youmagentohost/api/soap/?wsdl
  
@@ -8,3 +8,4 @@ $session = $client->login('admin', 'secret09');
  
 $result = $client->call($session, 'create.directory', array (2, array ('name' => 'titi')));
 print_r ($result);
+?>
