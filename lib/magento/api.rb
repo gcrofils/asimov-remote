@@ -158,19 +158,21 @@ END_RULES
 
   attr_accessor :role_name, :first_name, :last_name, :email, :user_name, :password, :rules
   
-  def self.test
-    client = Savon::Client.new "http://delhaye.milizone.com/api/v2_soap?wsdl=1"
-    response = client.login { |soap| soap.body = { :username => "admin", :password => "secret09" } }
-    #client.wsdl.soap_actions.collect{|a| a.to_s}.sort.map{|a| puts "# #{a.to_sym}"}
-    #response = client.catalog_category_tree do |soap, wsse|
-    #wsse.username = "admin"
-    #wsse.password = "secret09"
-   #soap.body = { :id => 666 }
- # end
-    session = response.to_hash[:login_response][:login_return]
-    puts "#{session} *********"
-    response = client.catalog_category_tree { |soap| soap.body = { :toto => 123} }
+  def sessionId
+    @sessionId ||= client.login { |soap| soap.body = { :username => "admin", :api_key => "secret09" } }.to_hash[:login_response][:login_return]
   end
+  
+  def client
+    @client ||= Savon::Client.new "http://delhaye.milizone.com/api/v2_soap?wsdl=1"
+  end
+  
+  def create_category(options = {})
+    puts "session ID : #{sessionId}"
+    response = client.catalog_category_create do |soap|
+     soap.body = { :session_id => 'fea893bd379046f0416407078dd4c4c4', :parent_id => options[:parent_id], :category_data => options}
+   end
+   pp response
+  end  
 
   def initialize
       @role_name  = 'CatalogManager'
