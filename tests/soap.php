@@ -7,7 +7,8 @@ $client = new SoapClient('http://delhaye.milizone.com/api/?wsdl');
 // If somestuff requires api authentification,
 // we should get session token
 $session = $client->login('admin', 'secret09');
+print_r($session);
  
-$result = $client->call($session, 'create.directory', array (2, array ('name' => 'titi')));
+$result = $client->call($session, 'category.create', array (2, array ('name' => 'titi')));
 print_r ($result);
 ?>
