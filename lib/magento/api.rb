@@ -168,8 +168,9 @@ END_RULES
   
   def create_category(options = {})
     puts "session ID : #{sessionId}"
+    #puts client.wsdl.to_s
     response = client.catalog_category_create do |soap|
-     soap.body = { :session_id => 'fea893bd379046f0416407078dd4c4c4', :parent_id => options[:parent_id], :category_data => options}
+     soap.body = { :session_id => sessionID, :parent_id => options[:parent_id], :category_data => options}
    end
    pp response
   end  
