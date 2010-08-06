@@ -53,8 +53,9 @@ module Mage
        alias :id= :product_id=
        
                      
-  def initialize(id = nil)
-    @id = @product_id = id
+  def initialize(attributes = {})
+    @id = @product_id = attributes[:id]
+    @sku = attributes[:sku]
   end
   
 

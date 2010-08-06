@@ -254,8 +254,7 @@ END_RULES
                      }
       end
       unless response.http_error? or response.soap_fault?
-        p = MageProduct.new response.to_hash[:catalog_product_create_response][:result]
-        p.sku = options[:sku]
+        p = MageProduct.new(:id => response.to_hash[:catalog_product_create_response][:result], :sku => options[:sku])
         products << p
         p
       else
@@ -280,9 +279,10 @@ END_RULES
   
   def load_products
     sessionId #Savon Bug ? Asimov Bug ? Needs to be called once.
+    @products = []
     products = client.catalog_product_list { |soap| soap.body = { :session_id => sessionId } }.to_hash[:catalog_product_list_response][:store_view][:item]
     products = [products] unless products.is_a?(Array)
-    products.each {|p| @products << MageProduct.new(p[:sku])}
+    products.each {|p| @products << MageProduct.new(:sku => p[:sku])}
     @products
   end
   
