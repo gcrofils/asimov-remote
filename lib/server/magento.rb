@@ -104,10 +104,12 @@ class Magento < Server::Base
   end
   
   def load_catalogue
+    api = Mage::Api.new
     Mage::Category.find(:all).each do |c|
       c.api = api
       c.create!
     end
+    pp api.categories
   end
   
   private

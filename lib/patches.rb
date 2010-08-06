@@ -1,9 +1,18 @@
-
+require 'lipsum/lib/lipsum'
+    
 module Kernel
   def logger
     ASIMOV_DEFAULT_LOGGER
   end
 end
+
+class String
+
+  def lipsum
+    self.gsub(/^!lipsum\(([0-9]+)\.\.([0-9]+)\.(words|characters)\)$/){Lipsum.generate(:start_with_lipsum => false, $3.to_sym => $1.to_i + rand($2.to_i-$1.to_i))} unless self.nil?
+  end
+end
+
 
 module ActiveSupport
   class BufferedLogger

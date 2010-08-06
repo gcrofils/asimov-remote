@@ -12,6 +12,15 @@ module Mage
       Digest::MD5.hexdigest("#{salt}#{passphrase}") + ":#{salt}"
     end
     
+    #php wrapper
+    def php(cmd)
+      %x[php -r '#{cmd.gsub('\'','"')}']
+    end
+    
+    def php_format(options = {})
+      options.collect{|k,v| "'#{k}' => '#{v.nil? ? '' : v.gsub('\'','\\\'')}'"}.join(',')
+    end
+    
   end
   
   
@@ -40,7 +49,7 @@ module Mage
           i = i.succ
           break open(uri).read
         rescue Exception => e
-          logger.warning "Remote Data failed ! with exception #{e} #{"will not retry." if i.eql?(retries)}"
+          logger.warn "Remote Data failed ! with exception #{e} #{"will not retry." if i.eql?(retries)}"
           sleep 2 unless i.eql?(retries)
         end
       end
@@ -59,7 +68,7 @@ module Mage
             begin
               obj.send("#{attributes[i]}=".to_sym ,col.nil? ? nil : col.strip)
             rescue NoMethodError
-              logger.warning "#{self.class.name} Undefined attribute #{attributes[row.index(col)]} >#{col.strip unless col.nil?}<"
+              logger.warn "#{self.class.name} Undefined attribute #{attributes[row.index(col)]} >#{col.strip unless col.nil?}<"
             end
             i = i.succ
           end

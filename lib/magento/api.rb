@@ -156,33 +156,83 @@ module Mage
  deny  | sales/order/shipment/track
 END_RULES
 
-  attr_accessor :role_name, :first_name, :last_name, :email, :user_name, :password, :rules
+  attr_accessor :role_name, :first_name, :last_name, :email, :user_name, :password, :rules, :wsdlv2, :wsdl
   
   def sessionId
-    @sessionId ||= client.login { |soap| soap.body = { :username => "admin", :api_key => "secret09" } }.to_hash[:login_response][:login_return]
+    @sessionId ||= client.login { |soap| soap.body = { :username => user_name, :api_key => password } }.to_hash[:login_response][:login_return]
   end
   
   def client
-    @client ||= Savon::Client.new "http://delhaye.milizone.com/api/v2_soap?wsdl=1"
+    @client ||= Savon::Client.new wsdlv2
   end
   
   def create_category(options = {})
-    puts "session ID : #{sessionId}"
-    #puts client.wsdl.to_s
-    response = client.catalog_category_create do |soap|
-     soap.body = { :session_id => sessionID, :parent_id => options[:parent_id], :category_data => options}
-   end
-   pp response
-  end  
+    logger.info "#Mage::Api.create_category #{options.inspect}"
+    # hack savon
+    cmd = "$client = new SoapClient('#{wsdl}');"
+    cmd += "echo $client->call('#{sessionId}', 'category.create', array (#{options[:parent_id]}, array (#{Mage.php_format(options)})));"
+    puts cmd
+    category = category_info(MageCategory.new(Mage.php(cmd)))
+    categories << category
+    category
+  end 
+  
+  def update_category(option={})
+    logger.debug "#Mage::Api.update_category #{options.inspect}"
+    # hack savon
+    cmd = "$client = new SoapClient('#{wsdl}');"
+    cmd += "echo $client->call('#{sessionId}', 'category.update', array (#{options[:parent_id]}, array (#{Mage.php_format(options)})));"
+    Mage.php(cmd) #"
+  end
+  
+  def find_category_by_url_key(url_key)
+    categories.select{|c| c.url_key.eql?(url_key)}
+  end
+
+  def categories
+    @categories || category_parse(category_tree)
+  end
+  
+  def category_tree
+    sessionId #Savon Bug ? Asimov Bug ? Needs to be called once.
+    client.catalog_category_tree { |soap| soap.body = { :session_id => sessionId } }.to_hash[:catalog_category_tree_response][:tree]
+  end
+  
+  def category_info(category)
+    sessionId
+    begin
+      client.catalog_category_info { |soap| soap.body = { :session_id => sessionId, :category_id => category.id}}.to_hash[:catalog_category_info_response][:info].each do |k,v|
+        category.send "#{k}=",v
+      end
+    rescue Exception => e
+      logger.warn "#Mage::Api.category_info #{e} category not found #{category.inspect}"
+    end
+    category
+  end
+  
+  def category_parse(category_tree)
+    @categories = [] if @categories.nil?
+    if category_tree.is_a?(Array)
+      category_tree.each{|c| category_parse c} 
+    else
+      @categories << category_info(MageCategory.new(category_tree[:category_id]))
+      category_parse category_tree[:children][:item] unless category_tree[:children][:item].nil?
+    end
+    @categories
+  end
+  
 
   def initialize
       @role_name  = 'CatalogManager'
       @first_name = 'api_user'
       @last_name   = 'api_user'
       @email      = 'apiuser@example.org'
-      @user_name  = ''
-      @password   = ''
+      @user_name  = 'admin'
+      @password   = 'secret09'
       @rules      = CSV.parse(API_DEFAULT_RULES, "|")
+      @wsdlv2     = 'http://delhaye.milizone.com/api/v2_soap?wsdl=1'
+      @wsdl       = 'http://delhaye.milizone.com/api/?wsdl'
+      Savon::Request.logger = ASIMOV_DEFAULT_LOGGER
   end
   
   def create_role
