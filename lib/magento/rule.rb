@@ -11,7 +11,7 @@ module Mage
     def method_missing(meth, *args, &block)
       #if meth.to_s[0..0].eql?('*')
         self.roles ||= Array.new
-        self.roles << meth.to_s.gsub('=','').gsub('*','') if !args[0].nil? and args[0].downcase.eql?('x')
+        self.roles << meth.to_s.gsub('=','').gsub('*','') if (!args.first.nil? and args.first.downcase.eql?('x'))
       #end
     end
     

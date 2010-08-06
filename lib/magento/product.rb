@@ -13,6 +13,27 @@ module Mage
     end
     
     def create!
+      options = {
+      :name => name, 
+      :description => description.lipsum, 
+      :short_description => short_description.lipsum, 
+      :price => price, 
+      :meta_title => meta_description.lipsum, 
+      :meta_keywords => meta_description.lipsum, 
+      :meta_description => meta_description.lipsum, 
+      :qty => qty, 
+      :tax_class_id => tax_class_id, 
+      :type => type, 
+      :set => set, 
+      :weight => weight,
+      :status => 1, 
+      :visibility => 4, 
+      :inventory_manage_stock => 1,
+      :is_in_stock => 1,
+      :use_config_manage_stock => 0
+      }
+      pp api.create_product options
+      pp api.product_stock_update options
     end
     
     def not_exist?

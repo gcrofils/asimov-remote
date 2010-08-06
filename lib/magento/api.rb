@@ -172,6 +172,7 @@ END_RULES
     while i < retries
       i = i.succ
       response = client.login { |soap| soap.body = { :username => user_name, :api_key => password } }
+      logger.debug response.inspect
       return response.to_hash[:login_response][:login_return] unless (response.http_error? or response.soap_fault?)
       logger.warn "Api Login failed ! #{response.http_error} #{response.soap_fault} #{"will not retry." if i.eql?(retries)}"
       sleep 2 unless i.eql?(retries)
@@ -237,6 +238,28 @@ END_RULES
     end
     @categories
   end
+  
+  def create_product(options = {})
+      logger.debug "#Mage::Api.create_product #{options.inspect}"
+      client.catalog_product_create do |soap|
+        soap.body = { :session_id => sessionId, 
+                      :sku => options[:sku],
+                      :set => options[:set],
+                      :productData => options
+                     }
+      end
+  end
+  
+  def product_stock_update(options={})
+    logger.debug "#Mage::Api.product_stock_update #{options.inspect}"
+    catalog_inventory_stock_item_update do |soap|
+      soap.body = { :session_id => sessionId, 
+                      :sku => options[:sku],
+                      :data => {:qty => options[:qty], :is_in_stock => options[:is_in_stock]}
+                     }
+      end
+  end
+    
   
 
   def initialize
