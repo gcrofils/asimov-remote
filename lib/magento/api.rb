@@ -245,6 +245,7 @@ END_RULES
         soap.body = { :session_id => sessionId, 
                       :sku => options[:sku],
                       :set => options[:set],
+                      :type => options[:type],
                       :productData => options
                      }
       end
