@@ -1,8 +1,8 @@
 require 'server'
 require 'settings'
 
-puts "start TESTS"
-Magento.new.load_catalogue
+#puts "start TESTS"
+#Magento.new.load_catalogue
 
 #les_instants_de_vie
 #les-instants-de-vie
@@ -27,3 +27,9 @@ Magento.new.load_catalogue
 #      c.create!
 #    end
 #    pp api.categories
+
+client = Savon::Client.new('http://delhaye.milizone.com/api/v2_soap?wsdl=1')
+response = client.login { |soap| soap.body = { :username => 'admin', :api_key => 'secret09' } }
+unless response.http_error?
+  pp response.to_hash[:login_response][:login_return]
+end

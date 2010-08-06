@@ -89,6 +89,10 @@ require 'savon'
 
 
 module Mage
+  
+  class ApiLoginFailed < StandardError #:nodoc:
+    end
+  
   class Api
     
     API_DEFAULT_RULES = <<END_RULES
@@ -159,7 +163,20 @@ END_RULES
   attr_accessor :role_name, :first_name, :last_name, :email, :user_name, :password, :rules, :wsdlv2, :wsdl
   
   def sessionId
-    @sessionId ||= client.login { |soap| soap.body = { :username => user_name, :api_key => password } }.to_hash[:login_response][:login_return]
+    @sessionId ||= client_login
+  end
+  
+  def client_login(retries = 3)
+    logger.debug "Mage::Api.client_login #{user_name}"
+    i = 0
+    while i < retries
+      i = i.succ
+      response = client.login { |soap| soap.body = { :username => user_name, :api_key => password } }
+      return response.to_hash[:login_response][:login_return] unless response.http_error? or response.soap_fault?
+      logger.warn "Api Login failed ! #{response.http_error} #{response.soap_fault} #{"will not retry." if i.eql?(retries)}"
+      sleep 2 unless i.eql?(retries)
+    end
+    raise ApiLoginFailed
   end
   
   def client
@@ -167,11 +184,11 @@ END_RULES
   end
   
   def create_category(options = {})
-    logger.info "#Mage::Api.create_category #{options.inspect}"
+    logger.debug "#Mage::Api.create_category #{options.inspect}"
     # hack savon
     cmd = "$client = new SoapClient('#{wsdl}');"
     cmd += "echo $client->call('#{sessionId}', 'category.create', array (#{options[:parent_id]}, array (#{Mage.php_format(options)})));"
-    puts cmd
+    logger.debug cmd
     category = category_info(MageCategory.new(Mage.php(cmd)))
     categories << category
     category

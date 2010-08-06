@@ -100,7 +100,13 @@ class Magento < Server::Base
     api = Mage::Api.new
     api.create_role
     api.create_user :user_name => admin.user_name, :password => admin.password
-    load_catalogue api
+    logger.debug "******** START Loading catalog *********"
+    begin
+      load_catalogue api
+      load_new_attributes api
+    rescue Exception => e
+      logger.error "Error during Catalog loading #{e}"
+    end
   end
   
   def load_catalogue(api)
@@ -108,7 +114,13 @@ class Magento < Server::Base
       c.api = api
       c.create! if c.not_exist?
     end
-    #pp api.categories
+    Mage::Product.find(:all).each do |p|
+      p.api = api
+      p.create! if p.not_exist?
+    end
+    Mage::ProductNewAttribute.find(:all).each do |p|
+      
+    end
   end
   
   private
