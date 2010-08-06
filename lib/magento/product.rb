@@ -29,8 +29,8 @@ module Mage
   class MageProduct
       attr_accessor  :sku
                      
-       alias :id :category_id
-       alias :id= :category_id=
+       alias :id :sku
+       alias :id= :sku=
        
                      
   def initialize(id = nil)
