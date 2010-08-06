@@ -3,18 +3,31 @@ require 'magento/base'
 module Mage
   class Category < Mage::Base
     
-    attr_accessor :parent_url_key, :name, :url_key, :description, :page_title, :meta_keywords, :meta_description, :is_active, :available_sort_by, :default_sort_by
+    attr_accessor :parent_id, :parent_url_key, :name, :url_key, :description, :page_title, :meta_keywords, :meta_description, :is_active, :available_sort_by, :default_sort_by
     cattr_accessor :uri
     attr_accessor :api
     
     def create!
-        parent_category = api.find_category_by_url_key(parent_url_key).first
-        if parent_category.nil?
-          logger.error "url key #{parent_url_key} not found in catalog"
-        else
-          options = {:parent_id => parent_category.id, :name => name, :url_key => url_key, :description => description.lipsum, :page_title => page_title.lipsum, :meta_keyword => meta_keywords.lipsum, :meta_description => meta_description.lipsum, :is_active => is_active, :available_sort_by => available_sort_by, :default_sort_by => default_sort_by}
-          api.create_category options
-        end
+      if parent_exist?
+        options = {:parent_id => parent_id, :name => name, :url_key => url_key, :description => description.lipsum, :page_title => page_title.lipsum, :meta_keyword => meta_keywords.lipsum, :meta_description => meta_description.lipsum, :is_active => is_active, :available_sort_by => available_sort_by, :default_sort_by => default_sort_by}
+        api.create_category options
+      else
+        logger.error "url key #{parent_url_key} not found in catalog"
+      end
+    end
+    
+    def not_exist?
+      api.find_category_by_url_key(url_key).first.nil?
+    end
+    
+    def parent_exist?
+      @parent_id || load_parent
+    end
+    
+    def load_parent
+      parent = api.find_category_by_url_key(parent_url_key).first
+      @parent_id = parent.id unless parent.nil?
+      @parent_id || false
     end
 
   end
@@ -41,7 +54,8 @@ module Mage
                      :meta_description,
                      :meta_keywords,
                      :meta_title,
-                     :description
+                     :description,
+                     :custom_layout_update
                      
        alias :id :category_id
        alias :id= :category_id=

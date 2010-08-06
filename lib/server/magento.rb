@@ -28,10 +28,10 @@ class Magento < Server::Base
 
   def initialize
   super
-  initialize_user
+  initialize_uri
   end
 
-  def initialize_user
+  def initialize_uri
     Mage::User.uri = "http://spreadsheets.google.com/pub?#{c.spreadsheet_users}&hl=fr&single=true&output=csv"
     Mage::Rule.uri = "http://spreadsheets.google.com/pub?#{c.spreadsheet_rules}&hl=fr&single=true&output=csv"
     Mage::Category.uri = "http://spreadsheets.google.com/pub?#{c.spreadsheet_categories}&hl=fr&single=true&output=csv"
@@ -107,7 +107,7 @@ class Magento < Server::Base
     api = Mage::Api.new
     Mage::Category.find(:all).each do |c|
       c.api = api
-      c.create!
+      c.create! if c.not_exist?
     end
     pp api.categories
   end
