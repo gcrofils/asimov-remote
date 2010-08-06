@@ -256,7 +256,7 @@ END_RULES
       unless response.http_error? or response.soap_fault?
         p = MageProduct.new response.to_hash[:catalog_product_create_response][:result]
         p.sku = options[:sku]
-        @products << p
+        products << p
         p
       else
         logger.warn "Create Product #{sku} failed !"
