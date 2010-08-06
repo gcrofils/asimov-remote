@@ -55,7 +55,8 @@ module Mage
                      :meta_keywords,
                      :meta_title,
                      :description,
-                     :custom_layout_update
+                     :custom_layout_update,
+                     :page_layout
                      
        alias :id :category_id
        alias :id= :category_id=

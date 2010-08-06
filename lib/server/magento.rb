@@ -100,16 +100,15 @@ class Magento < Server::Base
     api = Mage::Api.new
     api.create_role
     api.create_user :user_name => admin.user_name, :password => admin.password
-    load_catalogue
+    load_catalogue api
   end
   
-  def load_catalogue
-    api = Mage::Api.new
+  def load_catalogue(api)
     Mage::Category.find(:all).each do |c|
       c.api = api
       c.create! if c.not_exist?
     end
-    pp api.categories
+    #pp api.categories
   end
   
   private
