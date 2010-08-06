@@ -30,10 +30,12 @@ module Mage
       :visibility => 4, 
       :inventory_manage_stock => 1,
       :is_in_stock => 1,
-      :use_config_manage_stock => 0
+      :use_config_manage_stock => 0,
+      :sku => sku
       }
       pp api.create_product options
       pp api.product_stock_update options
+      categories.each {|c| pp api_product_assign_category(:category_id => c.id, :sku => sku)}
     end
     
     def not_exist?

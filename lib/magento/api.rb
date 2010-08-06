@@ -259,6 +259,16 @@ END_RULES
                      }
       end
   end
+  
+  def product_assign_category(options={})
+    logger.debug "#Mage::Api.product_assign_category #{options.inspect}"
+    catalog_category_assign_product do |soap|
+      soap.body = { :session_id => sessionId, 
+                      :sku => options[:sku],
+                      :category_id => options[:category_id]
+                     }
+      end
+  end
     
   
 
