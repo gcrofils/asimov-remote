@@ -7,8 +7,8 @@ require 'settings'
 #les_instants_de_vie
 #les-instants-de-vie
 
-#magento = Magento.new
-#api = Mage::Api.new
+magento = Magento.new
+pp Mage::Api.new.products
 
 #c = Mage::Category.new
 #c.api = api
@@ -28,8 +28,8 @@ require 'settings'
 #    end
 #    pp api.categories
 
-client = Savon::Client.new('http://delhaye.milizone.com/api/v2_soap?wsdl=1')
-response = client.login { |soap| soap.body = { :username => 'admin', :api_key => 'secret09' } }
-unless response.http_error?
-  pp response.to_hash[:login_response][:login_return]
-end
+#client = Savon::Client.new('http://delhaye.milizone.com/api/v2_soap?wsdl=1')
+#response = client.login { |soap| soap.body = { :username => 'admin', :api_key => 'secret09' } }
+#unless response.http_error?
+#  pp response.to_hash[:login_response][:login_return]
+#end

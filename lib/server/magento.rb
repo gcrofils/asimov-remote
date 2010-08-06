@@ -5,6 +5,7 @@ require 'magento/user'
 require 'magento/category'
 require 'magento/product'
 require 'magento/product_new_attribute'
+require 'magento/image'
 require 'pp'
 
 class Magento < Server::Base
@@ -41,6 +42,7 @@ class Magento < Server::Base
     Mage::Category.uri = "http://spreadsheets.google.com/pub?#{c.spreadsheet_categories}&hl=fr&single=true&output=csv"
     Mage::Product.uri = "http://spreadsheets.google.com/pub?#{c.spreadsheet_products}&hl=fr&single=true&output=csv"
     Mage::ProductNewAttribute.uri = "http://spreadsheets.google.com/pub?#{c.spreadsheet_products_new_attributes}&hl=fr&single=true&output=csv"
+    Mage::Image.uri = "http://picasaweb.google.com/data/feed/base/user/#{c.picasa}?alt=rss&kind=photo&hl=en_US"
   end
 
   def users

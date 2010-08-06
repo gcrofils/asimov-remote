@@ -33,16 +33,13 @@ module Mage
       :use_config_manage_stock => 0,
       :sku => sku
       }
-      pp api.create_product options
+      api.create_product options if not_exist?
       pp api.product_stock_update options
       categories.each {|c| pp api_product_assign_category(:category_id => c.id, :sku => sku)}
     end
     
     def not_exist?
-      true
-    end
-    
-    def parent_exist?
+      api.find_product_by_sku(sku).first.nil?
     end
     
 
@@ -50,14 +47,14 @@ module Mage
 
   # virtual Mage Product (several tables in DB)
   class MageProduct
-      attr_accessor  :sku
+      attr_accessor  :sku, :product_id
                      
-       alias :id :sku
-       alias :id= :sku=
+       alias :id :product_id
+       alias :id= :product_id=
        
                      
   def initialize(id = nil)
-    @id = @sku = id
+    @id = @product_id = id
   end
   
 

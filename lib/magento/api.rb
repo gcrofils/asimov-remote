@@ -206,6 +206,10 @@ END_RULES
   def find_category_by_url_key(url_key)
     categories.select{|c| c.url_key.eql?(url_key)}
   end
+  
+  def find_product_by_sku(sku)
+    products.select{|p| p.sku.eql?(sku)}
+  end
 
   def categories
     @categories || category_parse(category_tree)
@@ -241,7 +245,7 @@ END_RULES
   
   def create_product(options = {})
       logger.debug "#Mage::Api.create_product #{options.inspect}"
-      client.catalog_product_create do |soap|
+      response = client.catalog_product_create do |soap|
         soap.body = { :session_id => sessionId, 
                       :sku => options[:sku],
                       :set => options[:set],
@@ -249,11 +253,20 @@ END_RULES
                       :productData => options
                      }
       end
+      unless response.http_error? or response.soap_fault?
+        p = MageProduct.new response.to_hash[:catalog_product_create_response][:result]
+        p.sku = options[:sku]
+        @products << p
+        p
+      else
+        logger.warn "Create Product #{sku} failed !"
+        nil
+      end
   end
   
   def product_stock_update(options={})
     logger.debug "#Mage::Api.product_stock_update #{options.inspect}"
-    catalog_inventory_stock_item_update do |soap|
+    client.catalog_inventory_stock_item_update do |soap|
       soap.body = { :session_id => sessionId, 
                       :sku => options[:sku],
                       :data => {:qty => options[:qty], :is_in_stock => options[:is_in_stock]}
@@ -261,9 +274,21 @@ END_RULES
       end
   end
   
+  def products
+    @products || load_products
+  end
+  
+  def load_products
+    sessionId #Savon Bug ? Asimov Bug ? Needs to be called once.
+    products = client.catalog_product_list { |soap| soap.body = { :session_id => sessionId } }.to_hash[:catalog_product_list_response][:store_view][:item]
+    products = [products] unless products.is_a?(Array)
+    products.each {|p| @products << MageProduct.new(p[:sku])}
+    @products
+  end
+  
   def product_assign_category(options={})
     logger.debug "#Mage::Api.product_assign_category #{options.inspect}"
-    catalog_category_assign_product do |soap|
+    client.catalog_category_assign_product do |soap|
       soap.body = { :session_id => sessionId, 
                       :sku => options[:sku],
                       :category_id => options[:category_id]
