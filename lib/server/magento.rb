@@ -22,6 +22,8 @@ class Magento < Server::Base
           :spreadsheet_rules => '',
           :spreadsheet_users => '',
           :spreadsheet_categories => '',
+          :spreadsheet_products => '',
+          :spreadsheet_products_new_attributes => '',
           :modules          => Array.new,
           :www_user         => 'www',
           :www_group        => 'www'
@@ -37,6 +39,8 @@ class Magento < Server::Base
     Mage::User.uri = "http://spreadsheets.google.com/pub?#{c.spreadsheet_users}&hl=fr&single=true&output=csv"
     Mage::Rule.uri = "http://spreadsheets.google.com/pub?#{c.spreadsheet_rules}&hl=fr&single=true&output=csv"
     Mage::Category.uri = "http://spreadsheets.google.com/pub?#{c.spreadsheet_categories}&hl=fr&single=true&output=csv"
+    Mage::Product.uri = "http://spreadsheets.google.com/pub?#{c.spreadsheet_products}&hl=fr&single=true&output=csv"
+    Mage::ProductNewAttribute.uri = "http://spreadsheets.google.com/pub?#{c.spreadsheet_products_new_attributes}&hl=fr&single=true&output=csv"
   end
 
   def users
