@@ -172,7 +172,7 @@ END_RULES
     while i < retries
       i = i.succ
       response = client.login { |soap| soap.body = { :username => user_name, :api_key => password } }
-      return response.to_hash[:login_response][:login_return] unless response.http_error? or response.soap_fault?
+      return response.to_hash[:login_response][:login_return] unless (response.http_error? or response.soap_fault?)
       logger.warn "Api Login failed ! #{response.http_error} #{response.soap_fault} #{"will not retry." if i.eql?(retries)}"
       sleep 2 unless i.eql?(retries)
     end

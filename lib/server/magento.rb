@@ -3,6 +3,8 @@ require 'magento/api'
 require 'magento/rule'
 require 'magento/user'
 require 'magento/category'
+require 'magento/product'
+require 'magento/product_new_attribute'
 require 'pp'
 
 class Magento < Server::Base

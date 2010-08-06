@@ -3,9 +3,14 @@ require 'magento/base'
 module Mage
   class Product < Mage::Base
     
-    attr_accessor :sku
+    attr_accessor :sku, :name , :description, :short_description, :price, :meta_title, :meta_keywords, :meta_description, :qty, :tax_class_id, :type, :set, :weight, :categories
     cattr_accessor :uri
     attr_accessor :api
+    
+    def category_add(url_key)
+      @categories = [] if @categories.nil?
+      @categories << api.find_category_by_url_key(url_key)
+    end
     
     def create!
     end

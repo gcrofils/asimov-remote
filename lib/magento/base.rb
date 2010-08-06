@@ -18,7 +18,7 @@ module Mage
     end
     
     def php_format(options = {})
-      options.collect{|k,v| "'#{k}' => '#{v.nil? ? '' : v.gsub('\'','\\\'')}'"}.join(',')
+      options.collect{|k,v| "'#{k}' => '#{v.nil? ? '' : v.gsub("'") {"\\'"}}'"}.join(',')
     end
     
   end
@@ -66,7 +66,8 @@ module Mage
           i = 0
           row.each do |col|
             begin
-              obj.send("#{attributes[i]}=".to_sym ,col.nil? ? nil : col.strip)
+              m = attributes[i][-2,2].eql?('[]') ? "#{attributes[i]}_add" : "#{attributes[i]}="
+              obj.send(m.to_sym ,col.nil? ? nil : col.strip)
             rescue NoMethodError
               logger.warn "#{self.class.name} Undefined attribute #{attributes[row.index(col)]} >#{col.strip unless col.nil?}<"
             end
