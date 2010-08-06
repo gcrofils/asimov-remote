@@ -42,7 +42,7 @@ module Mage
     end
     
     def grab_remote_data(retries=3)
-      logger.info "READ #{uri} #{self.class.name}"
+      logger.debug "READ #{uri} #{self.class.name}"
       i = 0
       while i < retries
         begin
