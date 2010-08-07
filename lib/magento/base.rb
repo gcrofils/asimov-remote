@@ -69,7 +69,7 @@ module Mage
               m = attributes[i][-2,2].eql?('[]') ? "#{attributes[i].gsub('[]','')}_add" : "#{attributes[i]}="
               obj.send(m.to_sym ,col.nil? ? nil : col.strip)
             rescue NoMethodError
-              logger.warn "#{self.class.name} Undefined attribute #{attributes[i]} >#{col.strip unless col.nil?}<"
+              logger.warn "#{self.class.name} #{m} Undefined attribute #{attributes[i]} >#{col.strip unless col.nil?}<"
             end
             i = i.succ
           end

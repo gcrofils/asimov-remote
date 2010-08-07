@@ -126,6 +126,9 @@ class Magento < Server::Base
       p.api = api
       p.upsert!
     end
+  end
+  
+  def load_new_attributes(api)
     Mage::ProductNewAttribute.find(:all).each do |p|
       
     end

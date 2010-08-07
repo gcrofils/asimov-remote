@@ -19,7 +19,7 @@ module Mage
       :short_description => short_description.lipsum, 
       :price => price, 
       :meta_title => meta_description.lipsum, 
-      :meta_keywords => meta_description.lipsum, 
+      'meta_keywords' => meta_description.lipsum, 
       :meta_description => meta_description.lipsum, 
       :qty => qty, 
       :tax_class_id => tax_class_id, 
