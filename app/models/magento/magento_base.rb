@@ -66,7 +66,7 @@ end
 class CatalogCategoryEntityVarchar < ActiveRecord::Base 
  set_primary_key "value_id" 
 end
-class CatalogCategoryProduct
+class CatalogCategoryProduct < ActiveRecord::Base 
   def self.create(attributes)
     self.connection.execute("insert into catalog_category_product(category_id,product_id,position) values (#{attributes[:category_id]}, #{attributes[:product_id]}, #{attributes[:position] || 1});")
   end
