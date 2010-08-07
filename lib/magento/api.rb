@@ -166,15 +166,36 @@ END_RULES
     @sessionId ||= client_login
   end
   
+  def configuration
+    @configuration ||= load_configuration
+  end
+  
+  def wsdlv2
+    "http://#{configuration.domain}/api/v2_soap?wsdl=1"
+  end
+  
+  def wsdl  
+    "http://#{configuration.domain}/api/?wsdl"
+  end
+    
+    
+    def load_configuration
+      Settings.configuration['magento'].flatten!
+    end
+  
   def client_login(retries = 3)
     logger.debug "Mage::Api.client_login #{user_name}"
     i = 0
     while i < retries
       i = i.succ
-      response = client.login { |soap| soap.body = { :username => user_name, :api_key => password } }
-      logger.debug response.inspect
-      return response.to_hash[:login_response][:login_return] unless (response.http_error? or response.soap_fault?)
-      logger.warn "Api Login failed ! #{response.http_error} #{response.soap_fault} #{"will not retry." if i.eql?(retries)}"
+      begin
+        response = client.login { |soap| soap.body = { :username => user_name, :api_key => password } }
+        logger.debug response.inspect
+        return response.to_hash[:login_response][:login_return] unless (response.http_error? or response.soap_fault?)
+        logger.warn "Api Login failed ! #{response.http_error} #{response.soap_fault} #{"will not retry." if i.eql?(retries)}"
+      rescue Exception => e
+        logger.warn "Api Login failed ! #{e} #{"will not retry." if i.eql?(retries)}"
+      end
       sleep 2 unless i.eql?(retries)
     end
     raise ApiLoginFailed
@@ -309,8 +330,6 @@ END_RULES
       @user_name  = 'admin'
       @password   = 'secret09'
       @rules      = CSV.parse(API_DEFAULT_RULES, "|")
-      @wsdlv2     = 'http://delhaye.milizone.com/api/v2_soap?wsdl=1'
-      @wsdl       = 'http://delhaye.milizone.com/api/?wsdl'
       Savon::Request.logger = ASIMOV_DEFAULT_LOGGER
   end
   

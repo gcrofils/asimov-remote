@@ -35,7 +35,7 @@ module Mage
       }
       p = api.find_product_by_sku(sku).first
       p = api.create_product options if p.nil?
-      pp api.product_stock_update options
+      api.product_stock_update options
       categories.each do |url_key| 
         c = api.find_category_by_url_key(url_key).first
         CatalogCategoryProduct.create(:category_id => c.id, :product_id => p.product_id) unless c.nil?
