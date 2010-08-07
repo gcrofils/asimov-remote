@@ -9,6 +9,7 @@ module Mage
     
     def method_missing(meth, *args, &block)
       logger.info "#{meth.to_s.gsub('=','')} #{args.first}"
+      puts "Mage::ProductNewAttribute MethodMissing"
       self.attributes[meth.to_s.gsub('=','')] = args.first unless args.first.nil?
     end
     

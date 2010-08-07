@@ -113,7 +113,7 @@ class Magento < Server::Base
       load_catalogue api
       load_new_attributes api
     #rescue Exception => e
-      logger.error "Error during Catalog loading #{e}"
+      #logger.error "Error during Catalog loading #{e}"
     #end
   end
   
