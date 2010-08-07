@@ -282,8 +282,10 @@ END_RULES
     sessionId #Savon Bug ? Asimov Bug ? Needs to be called once.
     @products = []
     products = client.catalog_product_list { |soap| soap.body = { :session_id => sessionId } }.to_hash[:catalog_product_list_response][:store_view][:item]
-    products = [products] unless products.is_a?(Array)
-    products.each {|p| @products << MageProduct.new(:sku => p[:sku], :product_id => p[:product_id])}
+    unless products.nil?
+      products = [products] unless products.is_a?(Array)
+      products.each {|p| @products << MageProduct.new(:sku => p[:sku], :product_id => p[:product_id])}
+    end
     @products
   end
   
