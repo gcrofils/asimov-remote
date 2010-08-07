@@ -66,7 +66,8 @@ module Mage
                      :description,
                      :custom_layout_update,
                      :page_layout,
-                     :custom_design
+                     :custom_design,
+                     :custom_design_apply
                      
        alias :id :category_id
        alias :id= :category_id=
