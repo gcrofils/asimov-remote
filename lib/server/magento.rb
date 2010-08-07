@@ -130,7 +130,7 @@ class Magento < Server::Base
   
   def load_new_attributes(api)
     Mage::ProductNewAttribute.find(:all).each do |p|
-      
+      logger.debug p.inspect
     end
   end
   

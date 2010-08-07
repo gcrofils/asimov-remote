@@ -268,7 +268,7 @@ END_RULES
     response = client.catalog_inventory_stock_item_update do |soap|
       soap.body = { :session_id => sessionId, 
                       :product => options[:sku],
-                      :data => {:qty => options[:qty], :is_in_stock => options[:is_in_stock]}
+                      :data => {:qty => options[:qty], 'is_in_stock' => options[:is_in_stock]}
                      }
       end
       logger.warn "Update Product #{sku} Stock failed ! #{response.http_error} #{response.soap_fault}" if (response.http_error? or response.soap_fault?)

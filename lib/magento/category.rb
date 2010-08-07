@@ -9,7 +9,16 @@ module Mage
     
     def create!
       if parent_exist?
-        options = {:parent_id => parent_id, :name => name, :url_key => url_key, :description => description.lipsum, :page_title => page_title.lipsum, :meta_keyword => meta_keywords.lipsum, :meta_description => meta_description.lipsum, :is_active => is_active, :available_sort_by => available_sort_by, :default_sort_by => default_sort_by}
+        options = { :parent_id => parent_id,
+                    :name => name, 
+                    :url_key => url_key, 
+                    :description => description.lipsum, 
+                    'meta_title' => page_title.lipsum, 
+                    'meta_keywords' => meta_keywords.lipsum, 
+                    'meta_description' => meta_description.lipsum, 
+                    :is_active => is_active, 
+                    'available_sort_by' => available_sort_by, 
+                    'default_sort_by' => default_sort_by}
         api.create_category options
       else
         logger.error "url key #{parent_url_key} not found in catalog"
@@ -56,7 +65,8 @@ module Mage
                      :meta_title,
                      :description,
                      :custom_layout_update,
-                     :page_layout
+                     :page_layout,
+                     :custom_design
                      
        alias :id :category_id
        alias :id= :category_id=
