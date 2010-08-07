@@ -11,7 +11,7 @@ module Mage
     def isAdmin?
       role.eql?(ADMIN)
     end
-    
+  
     def admin
       all.select{|u| u.isAdmin?}
     end
