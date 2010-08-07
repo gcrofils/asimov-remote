@@ -10,7 +10,12 @@ require 'settings'
 #m = Mage::Product.new
 #m.send("category_add".to_sym, "toto")
 magento = Magento.new
-pp Mage::Api.new.products
+
+Mage::ProductNewAttribute.find(:all)[0..2].each do |p|
+  p.create!
+end
+#puts Mage::ProductNewAttribute.headers
+
 
 #c = Mage::Category.new
 #c.api = api
