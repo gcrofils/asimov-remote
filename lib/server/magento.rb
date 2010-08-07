@@ -124,7 +124,7 @@ class Magento < Server::Base
     end
     Mage::Product.find(:all).each do |p|
       p.api = api
-      p.create! if p.not_exist?
+      p.upsert!
     end
     Mage::ProductNewAttribute.find(:all).each do |p|
       

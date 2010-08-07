@@ -12,7 +12,7 @@ module Mage
       @categories << api.find_category_by_url_key(url_key)
     end
     
-    def create!
+    def upsert!
       options = {
       :name => name, 
       :description => description.lipsum, 
@@ -33,9 +33,10 @@ module Mage
       :use_config_manage_stock => 0,
       :sku => sku
       }
-      api.create_product options if not_exist?
+      p = api.find_product_by_sku(sku).first
+      p = api.create_product options if p.nil?
       pp api.product_stock_update options
-      categories.each {|c| pp api_product_assign_category(:category_id => c.id, :sku => sku)}
+      categories.each {|c| CatalogCategoryProduct.create(:category_id => c.id, :product_id => p.product_id)}
     end
     
     def not_exist?

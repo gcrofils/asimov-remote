@@ -1,5 +1,6 @@
 ActiveRecord::Base.pluralize_table_names = false
 
+
 class AdminAssert < ActiveRecord::Base 
  set_primary_key "assert_id" 
 end
@@ -65,8 +66,10 @@ end
 class CatalogCategoryEntityVarchar < ActiveRecord::Base 
  set_primary_key "value_id" 
 end
-class CatalogCategoryFlatStore1 < ActiveRecord::Base 
- set_primary_key "entity_id" 
+class CatalogCategoryProduct
+  def create(attributes)
+    self.connection.execute("insert into catalog_category_product(category_id,product_id,position) values (#{attributes[:category_id]}, #{attributes[:product_id]}, #{attributes[:position] || 1});")
+  end
 end
 class CatalogCompareItem < ActiveRecord::Base 
  set_primary_key "catalog_compare_item_id" 

@@ -258,19 +258,20 @@ END_RULES
         products << p
         p
       else
-        logger.warn "Create Product #{sku} failed !"
+        logger.warn "Create Product #{sku} failed ! #{response.http_error} #{response.soap_fault}"
         nil
       end
   end
   
   def product_stock_update(options={})
     logger.debug "#Mage::Api.product_stock_update #{options.inspect}"
-    client.catalog_inventory_stock_item_update do |soap|
+    response = client.catalog_inventory_stock_item_update do |soap|
       soap.body = { :session_id => sessionId, 
-                      :sku => options[:sku],
+                      :product => options[:sku],
                       :data => {:qty => options[:qty], :is_in_stock => options[:is_in_stock]}
                      }
       end
+      logger.warn "Update Product #{sku} Stock failed ! #{response.http_error} #{response.soap_fault}" if (response.http_error? or response.soap_fault?)
   end
   
   def products
@@ -282,7 +283,7 @@ END_RULES
     @products = []
     products = client.catalog_product_list { |soap| soap.body = { :session_id => sessionId } }.to_hash[:catalog_product_list_response][:store_view][:item]
     products = [products] unless products.is_a?(Array)
-    products.each {|p| @products << MageProduct.new(:sku => p[:sku])}
+    products.each {|p| @products << MageProduct.new(:sku => p[:sku], :product_id => p[:product_id])}
     @products
   end
   
