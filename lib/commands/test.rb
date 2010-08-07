@@ -7,10 +7,10 @@ require 'settings'
 #les_instants_de_vie
 #les-instants-de-vie
 
-m = Mage::Product.new
-m.send("category_add".to_sym, "toto")
-#magento = Magento.new
-#pp Mage::Api.new.products
+#m = Mage::Product.new
+#m.send("category_add".to_sym, "toto")
+magento = Magento.new
+pp Mage::Api.new.products
 
 #c = Mage::Category.new
 #c.api = api
