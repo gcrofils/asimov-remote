@@ -68,7 +68,7 @@ class CatalogCategoryEntityVarchar < ActiveRecord::Base
 end
 class CatalogCategoryProduct < ActiveRecord::Base 
   def self.create(attributes)
-    self.connection.execute("insert into catalog_category_product(category_id,product_id,position) values (#{attributes[:category_id]}, #{attributes[:product_id]}, #{attributes[:position] || 1});")
+    self.connection.execute("insert into catalog_category_product(category_id,product_id,position) values (#{attributes[:category_id]}, #{attributes[:product_id]}, #{attributes[:position] || 1}) on duplicate key update position = #{attributes[:position] || 1};")
   end
 end
 class CatalogCompareItem < ActiveRecord::Base 

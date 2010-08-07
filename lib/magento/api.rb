@@ -283,7 +283,6 @@ END_RULES
     @products = []
     products = client.catalog_product_list { |soap| soap.body = { :session_id => sessionId } }.to_hash[:catalog_product_list_response][:store_view][:item]
     unless products.nil?
-      puts products.inspect
       products = [products] unless products.is_a?(Array)
       products.each {|p| @products << MageProduct.new(:sku => p[:sku], :id => p[:product_id].to_i)}
     end
