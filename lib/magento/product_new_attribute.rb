@@ -16,8 +16,25 @@ module Mage
       @new_attributes[meth.to_s.gsub('=','')] = args.first unless args.first.nil?
     end
     
-    def create_new_attribute
-      
+    def find_attribute(attribute_code)
+      attribute = EavAttribute.find_by_attribute_code(attribute_code)
+      if attribute.nil?
+        EavAttribute.create(
+        :entity_type_id => ,
+        :attribute_model =>, 
+        :backend_model =>,
+        :backend_type =>,
+        :backend_table =>,
+        :frontend_model =>,
+        :frontend_input =>,
+        :frontend_label =>, 
+        :frontend_class =>, 
+        :source_model =>, 
+        :is_required =>, 
+        :is_user_defined =>, 
+        :default_value =>, 
+        :is_unique =>, 
+        :note =>,)
     end
     
     def create!
