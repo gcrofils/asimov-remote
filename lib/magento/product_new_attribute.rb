@@ -114,12 +114,13 @@ module Mage
     
     def parse_header
       unless @@headers_parsed
-        ret = []
+        ret = {}
         attributes = @@headers.shift
         @@headers.each do |row|
           i = 0
           key = row.shift
           row.each do |col|
+            ret[attributes[i]] ||= {}
             ret[attributes[i]][key.to_sym] = col
             i = i.succ
           end
