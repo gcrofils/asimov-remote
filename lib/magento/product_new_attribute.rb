@@ -9,7 +9,7 @@ module Mage
     cattr_reader :header_rows
     attr_accessor :api
     
-    @@header_rows = 10
+    @@header_rows = 9
     @@headers_parsed = false
     
     def method_missing(meth, *args, &block)
@@ -95,7 +95,7 @@ module Mage
     def create!
       parse_header
       puts @@headers.inspect
-      product = CatalogProductEntity.find_by_sku(:sku)
+      product = CatalogProductEntity.find_by_sku(sku)
       unless product.nil?
         new_attributes.each do |attribute_code, value|
           eavAttribute = find_attribute(attribute_code)
