@@ -36,6 +36,7 @@ module Mage
         :is_user_defined => 1, 
         :default_value => '', 
         :is_unique => 0, 
+        :is_required => 0,
         :note => attribute_code.humanize)
         
         EavEntityAttribute.create(
