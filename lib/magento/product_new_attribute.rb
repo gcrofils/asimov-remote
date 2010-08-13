@@ -75,9 +75,9 @@ module Mage
       group = EavAttributeGroup.find_by_attribute_group_name(group_name)
       if group.nil?
         group = EavAttributeGroup.create(
-        :attribute_set_id => 0, 
+        :attribute_set_id => 8, 
         :attribute_group_name => group_name, 
-        :sort_order => 8, 
+        :sort_order => 0, 
         :default_id => 0
         )
       end
