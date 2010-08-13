@@ -10,6 +10,7 @@ module Mage
     attr_accessor :api
     
     @@header_rows = 10
+    @@headers_parsed = false
     
     def method_missing(meth, *args, &block)
       @new_attributes ||= {}
@@ -97,7 +98,9 @@ module Mage
       unless product.nil?
         new_attributes.each do |attribute_code, value|
           eavAttribute = find_attribute(attribute_code)
-          "CatalogProductEntity#{eavAttribute.backend_type.capitalize}".constantize.create(
+          klass = "CatalogProductEntity#{eavAttribute.backend_type.capitalize}".constantize
+          catalogProductEntity = klass.find(:first, :condition => {:attribute_id => eavAttribute.id, :entity_id => product.entity_id}) || klass.new
+          catalogProductEntity.update_attributes(
           :entity_type_id => 4, 
           :attribute_id => eavAttribute.id, 
           :store_id => 0, 
@@ -109,7 +112,7 @@ module Mage
     end
     
     def parse_header
-      if @@headers_parsed.nil?
+      unless @@headers_parsed
         ret = []
         attributes = @@headers.shift
         @@headers.each do |row|
