@@ -22,6 +22,7 @@ module Mage
       if attribute.nil?
         att = @@headers[attribute_code]
         attribute = EavAttribute.create(
+        :attribute_code => attribute_code,
         :entity_type_id => 4,
         :attribute_model => '',  
         :backend_model => '',    
