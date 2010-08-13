@@ -18,7 +18,7 @@ module Mage
     end
     
     def find_attribute(attribute_code)
-      attribute = EavAttribute.find_by_attribute_code(attribute_code) || EavAttribute.new
+      attribute = EavAttribute.find_by_attribute_code(attribute_code)
       if attribute.nil?
         att = @@headers[attribute_code]
         attribute = EavAttribute.create(
