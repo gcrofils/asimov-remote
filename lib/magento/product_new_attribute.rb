@@ -123,6 +123,7 @@ module Mage
             ret[attribute[i]][key.to_sym] = col
             i = i.succ
           end
+          
         end
         @@headers = ret
       end
