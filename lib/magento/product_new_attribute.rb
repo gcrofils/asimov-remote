@@ -120,7 +120,7 @@ module Mage
           i = 0
           key = row.shift
           row.each do |col|
-            ret[attribute[i]][key.to_sym] = col
+            ret[attributes[i]][key.to_sym] = col
             i = i.succ
           end
           
