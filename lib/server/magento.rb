@@ -110,7 +110,7 @@ class Magento < Server::Base
     api.create_user :user_name => admin.user_name, :password => admin.password
     logger.debug "******** START Loading catalog *********"
     begin
-      load_catalogue api
+      #load_catalogue api
       load_new_attributes api
     rescue Exception => e
       logger.error "Error during Catalog loading : #{e}"

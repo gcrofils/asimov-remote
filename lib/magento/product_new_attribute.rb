@@ -94,6 +94,7 @@ module Mage
     
     def create!
       parse_header
+      puts @@headers.inspect
       product = CatalogProductEntity.find_by_sku(:sku)
       unless product.nil?
         new_attributes.each do |attribute_code, value|
