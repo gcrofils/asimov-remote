@@ -98,6 +98,7 @@ module Mage
       unless product.nil?
         new_attributes.each do |attribute_code, value|
           eavAttribute = find_attribute(attribute_code)
+          puts eavAttribute.inspect
           klass = "CatalogProductEntity#{eavAttribute.backend_type.capitalize}".constantize
           catalogProductEntity = klass.find(:first, :condition => {:attribute_id => eavAttribute.id, :entity_id => product.entity_id}) || klass.new
           catalogProductEntity.update_attributes(
