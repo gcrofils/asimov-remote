@@ -104,13 +104,17 @@ module Mage
           puts eavAttribute.inspect
           klass = "CatalogProductEntity#{eavAttribute.backend_type.capitalize}".constantize
           catalogProductEntity = klass.find(:first, :conditions => {:attribute_id => eavAttribute.id, :entity_id => product.entity_id}) || klass.new
-          catalogProductEntity.update_attributes(
-          :entity_type_id => 4, 
-          :attribute_id => eavAttribute.id, 
-          :store_id => 0, 
-          :entity_id => product.entity_id,
-          :value => eavAttribute.backend_type.eql?('varchar') ? value : find_option_value(eavAttribute.id, value).id
-          )
+          begin
+            catalogProductEntity.update_attributes(
+            :entity_type_id => 4, 
+            :attribute_id => eavAttribute.id, 
+            :store_id => 0, 
+            :entity_id => product.entity_id,
+            :value => eavAttribute.backend_type.eql?('varchar') ? value : find_option_value(eavAttribute.id, value).id
+            )
+          rescue Exception => e
+            logger.warn "ProductNewAttribute.create! #{e} #{attribute_code} => #{value}"
+          end
         end
       end
     end
