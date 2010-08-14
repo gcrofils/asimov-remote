@@ -6,6 +6,30 @@ module Kernel
   end
 end
 
+class FalseClass
+  def checked?
+    false
+  end
+end
+
+class TrueClass
+  def checked?
+    true
+  end
+end
+
+class String
+  def checked?
+    match(/(true|t|yes|y|1|x)$/i) != nil
+  end
+end
+
+class NilClass
+  def checked?
+    false
+  end
+end
+
 class String
 
   def lipsum
