@@ -18,6 +18,7 @@ module Mage
     end
     
     def find_attribute(attribute_code)
+      return nil if attribute_code.nil?
       attribute = EavAttribute.find_by_attribute_code(attribute_code)
       if attribute.nil?
         att = @@headers[attribute_code]
@@ -88,12 +89,12 @@ module Mage
     end
     
     def find_option_value(attributeId, value)
-      value = EavAttributeOptionValue.find(:first, :conditions => {:value => value, :option_id => EavAttributeOption.find_all_by_attribute_id(attributeId)})
-      if value.nil?
+      eavAttributeOptionValue = EavAttributeOptionValue.find(:first, :conditions => {:value => value, :option_id => EavAttributeOption.find_all_by_attribute_id(attributeId)})
+      if eavAttributeOptionValue.nil?
         option =  EavAttributeOption.create(:attribute_id => attributeId, :sort_order => 0)
-        value = EavAttributeOptionValue.create(:option_id => option.id, :store_id => 0, :value => value)
+        eavAttributeOptionValue = EavAttributeOptionValue.create(:option_id => option.id, :store_id => 0, :value => value)
       end
-      value
+      eavAttributeOptionValue
     end
     
     def create!
@@ -101,20 +102,22 @@ module Mage
       product = CatalogProductEntity.find_by_sku(sku)
       unless product.nil?
         new_attributes.each do |attribute_code, value|
-          eavAttribute = find_attribute(attribute_code)
-          puts eavAttribute.inspect
-          klass = "CatalogProductEntity#{eavAttribute.backend_type.capitalize}".constantize
-          catalogProductEntity = klass.find(:first, :conditions => {:attribute_id => eavAttribute.id, :entity_id => product.entity_id}) || klass.new
-          begin
-            catalogProductEntity.update_attributes(
-            :entity_type_id => 4, 
-            :attribute_id => eavAttribute.id, 
-            :store_id => 0, 
-            :entity_id => product.entity_id,
-            :value => eavAttribute.backend_type.eql?('varchar') ? value : find_option_value(eavAttribute.id, value).id
-            )
-          rescue Exception => e
-            logger.warn "ProductNewAttribute.create! #{e} #{attribute_code} => #{value}"
+          unless value.nil? or attribute_code.nil?
+            eavAttribute = find_attribute(attribute_code)
+            puts eavAttribute.inspect
+            klass = "CatalogProductEntity#{eavAttribute.backend_type.capitalize}".constantize
+            catalogProductEntity = klass.find(:first, :conditions => {:attribute_id => eavAttribute.id, :entity_id => product.entity_id}) || klass.new
+            begin
+              catalogProductEntity.update_attributes(
+              :entity_type_id => 4, 
+              :attribute_id => eavAttribute.id, 
+              :store_id => 0, 
+              :entity_id => product.entity_id,
+              :value => eavAttribute.backend_type.eql?('varchar') ? value : find_option_value(eavAttribute.id, value).id
+              )
+            rescue Exception => e
+              logger.warn "ProductNewAttribute.create! #{e} #{attribute_code} => #{value}"
+            end
           end
         end
       end
