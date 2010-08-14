@@ -48,8 +48,7 @@ module Mage
           :attribute_id => attribute.id, 
           :sort_order => 0)
           
-        CatalogEavAttribute.create(
-          :attribute_id => attribute.id,
+        cea = CatalogEavAttribute.new(
           :frontend_input_renderer => '',
           :is_global => 1,
           :is_visible => att[:is_visible], 
@@ -69,6 +68,8 @@ module Mage
           :is_wysiwyg_enabled => 1,
           :is_used_for_promo_rules => 0
           )
+         cea.attribute_id = attribute.id
+         cea.save
       end
       attribute
     end
