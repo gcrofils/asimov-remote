@@ -21,6 +21,7 @@ module Mage
       attribute = EavAttribute.find_by_attribute_code(attribute_code)
       if attribute.nil?
         att = @@headers[attribute_code]
+        puts att.inspect
         attribute = EavAttribute.create(
         :attribute_code => attribute_code,
         :entity_type_id => 4,
