@@ -125,13 +125,10 @@ module Mage
       unless @@headers_parsed
         ret = {}
         attributes = @@headers.shift
-        puts attributes.inspect
         @@headers.each do |row|
-          i = 0
-
+          i = 1
           key = row.shift
           row.each do |col|
-                    puts "#{attributes[i]} => #{col}"  
             ret[attributes[i]] ||= {}
             ret[attributes[i]][key.to_sym] = col
             i = i.succ
