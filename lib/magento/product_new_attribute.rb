@@ -103,7 +103,7 @@ module Mage
           eavAttribute = find_attribute(attribute_code)
           puts eavAttribute.inspect
           klass = "CatalogProductEntity#{eavAttribute.backend_type.capitalize}".constantize
-          catalogProductEntity = klass.find(:first, :condition => {:attribute_id => eavAttribute.id, :entity_id => product.entity_id}) || klass.new
+          catalogProductEntity = klass.find(:first, :conditions => {:attribute_id => eavAttribute.id, :entity_id => product.entity_id}) || klass.new
           catalogProductEntity.update_attributes(
           :entity_type_id => 4, 
           :attribute_id => eavAttribute.id, 
