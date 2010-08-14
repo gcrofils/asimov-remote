@@ -22,7 +22,6 @@ module Mage
       attribute = EavAttribute.find_by_attribute_code(attribute_code)
       if attribute.nil?
         att = @@headers[attribute_code]
-        puts "#{att.inspect} >#{attribute_code}<"
         attribute = EavAttribute.create(
         :attribute_code => attribute_code,
         :entity_type_id => 4,
@@ -104,7 +103,6 @@ module Mage
         new_attributes.each do |attribute_code, value|
           unless value.nil? or attribute_code.nil?
             eavAttribute = find_attribute(attribute_code)
-            puts eavAttribute.inspect
             klass = "CatalogProductEntity#{eavAttribute.backend_type.capitalize}".constantize
             catalogProductEntity = klass.find(:first, :conditions => {:attribute_id => eavAttribute.id, :entity_id => product.entity_id}) || klass.new
             begin
@@ -130,10 +128,10 @@ module Mage
         puts attributes.inspect
         @@headers.each do |row|
           i = 0
-          puts "#{attributes[i]} => #{col}"
+
           key = row.shift
           row.each do |col|
-            
+                    puts "#{attributes[i]} => #{col}"  
             ret[attributes[i]] ||= {}
             ret[attributes[i]][key.to_sym] = col
             i = i.succ
@@ -141,7 +139,6 @@ module Mage
           
         end
         @@headers = ret
-        puts @@headers.inspect
       end
       @@headers_parsed = true
     end
