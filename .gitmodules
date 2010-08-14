@@ -1,3 +1,6 @@
 [submodule "vendor/lipsum"]
 	path = vendor/lipsum
 	url = git://github.com/gcrofils/lipsum.git
+[submodule "vendor/magento-themes"]
+	path = vendor/magento-themes
+	url = git@github.com:gcrofils/magento-themes.git

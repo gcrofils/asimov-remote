@@ -1,3 +1,6 @@
-require 'magento-themes/lib/magetheme'
+require 'magento-themes/init'
 
-magetheme = ARGV.shift
+client = ARGV.shift
+magetheme = client
+
+MageTheme::Theme.new(:client => client, :theme => magetheme).install
