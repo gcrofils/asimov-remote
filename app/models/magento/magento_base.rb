@@ -202,14 +202,14 @@ class CheckoutAgreement < ActiveRecord::Base
 end
 class CmsBlock < ActiveRecord::Base 
  set_primary_key "block_id" 
-  has_and_belong_to_many :core_stores, 
+  has_and_belongs_to_many :core_stores, 
                          :join_table => "cms_block_store", 
                          :foreign_key => "block_id",
                          :association_foreign_key => "store_id"
 end
 class CmsPage < ActiveRecord::Base 
  set_primary_key "page_id" 
- has_and_belong_to_many :core_stores, 
+ has_and_belongs_to_many :core_stores, 
                          :join_table => "cms_page_store", 
                          :foreign_key => "page_id",
                          :association_foreign_key => "store_id"
@@ -244,11 +244,11 @@ class CoreSession < ActiveRecord::Base
 end
 class CoreStore < ActiveRecord::Base 
  set_primary_key "store_id" 
-  has_and_belong_to_many :cms_blocks, 
+  has_and_belongs_to_many :cms_blocks, 
                          :join_table => "cms_block_store", 
                          :foreign_key => "store_id",
                          :association_foreign_key => "block_id"
-   has_and_belong_to_many :cms_pages, 
+   has_and_belongs_to_many :cms_pages, 
                          :join_table => "cms_page_store", 
                          :foreign_key => "store_id",
                          :association_foreign_key => "page_id"
