@@ -1,5 +1,15 @@
 require 'server'
 require 'settings'
+require 'magento-themes/init'
+require 'theme'
+require 'block'
+require 'page'
+require 'magento/magento_base'
+
+client = ARGV.shift
+magetheme = client
+
+puts CmsBlock.all.inspect
 
 #puts "start TESTS"
 #Magento.new.load_catalogue
@@ -9,11 +19,11 @@ require 'settings'
 
 #m = Mage::Product.new
 #m.send("category_add".to_sym, "toto")
-magento = Magento.new
+#magento = Magento.new
 
-Mage::ProductNewAttribute.find(:all)[0..2].each do |p|
-  p.create!
-end
+#Mage::ProductNewAttribute.find(:all)[0..2].each do |p|
+#  p.create!
+#end
 #puts Mage::ProductNewAttribute.headers
 
 
