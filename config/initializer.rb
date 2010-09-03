@@ -82,7 +82,8 @@ module Asimov
         end
       end
 
-      silence_warnings { Object.const_set "ASIMOV_DEFAULT_LOGGER", logger }
+      #silence_warnings { Object.const_set "ASIMOV_DEFAULT_LOGGER", logger }
+      Object.const_set "ASIMOV_DEFAULT_LOGGER", logger
     end
     
   end
