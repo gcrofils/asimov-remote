@@ -4,6 +4,7 @@ require 'pathname'
 require 'yaml'
 require 'rubygems'
 require 'active_record'
+require 'fileutils'
 
 DEFAULT_ENV = 'development'  
 ASIMOV_ENV = (ENV['ASIMOV_ENV'] || DEFAULT_ENV).dup unless defined?(ASIMOV_ENV)
@@ -77,7 +78,7 @@ module Asimov
             logger.level = ActiveSupport::BufferedLogger::WARN
             logger.warn(
               "Asimov Error: Unable to access log file. Please ensure that #{configuration.log_path} exists and is chmod 0666. " +
-              "The log level has been raised to WARN and the output directed to STDERR until the problem is fixed."
+              "The log level has been raised to WARN and the output directed to STDERR until the problem is fixed.\n" + e
              )
         end
       end
