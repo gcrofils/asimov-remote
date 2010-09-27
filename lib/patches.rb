@@ -28,6 +28,9 @@ class NilClass
   def checked?
     false
   end
+  def lipsum
+    nil
+  end
 end
 
 class String

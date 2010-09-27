@@ -14,7 +14,7 @@ module Mage
     
     #php wrapper
     def php(cmd)
-      %x[php -r '#{cmd.gsub('\'','"')}']
+      %x[php -r '#{cmd.gsub('"', '\\"').gsub('\'','"')}']
     end
     
     def php_format(options = {})

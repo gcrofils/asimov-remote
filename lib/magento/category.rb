@@ -21,7 +21,7 @@ module Mage
                     'default_sort_by' => default_sort_by}
         api.create_category options
       else
-        logger.error "url key #{parent_url_key} not found in catalog"
+        logger.error "Error while inserting category \"#{url_key}\" url key #{parent_url_key} not found in catalog"
       end
     end
     
