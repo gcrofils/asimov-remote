@@ -6,6 +6,7 @@ require 'magento/category'
 require 'magento/product'
 require 'magento/product_new_attribute'
 require 'magento/image'
+require 'magento/atos'
 require 'pp'
 
 class Magento < Server::Base
@@ -52,6 +53,7 @@ class Magento < Server::Base
   def install
     install_core
     install_modules
+    install_atos
     cleaning
   end
 
@@ -94,6 +96,10 @@ class Magento < Server::Base
        cmd += "./pear clear-cache \n"
        system cmd
    end
+ end
+ 
+ def install_atos
+   Mage::Atos.new(c).install
  end
  
  def cleaning
