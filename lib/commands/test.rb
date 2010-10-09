@@ -1,4 +1,5 @@
 require 'server'
 require 'settings'
-Magento.new.install_atos
+api = Mage::Api.new 
+Magento.new.load_images api
 puts "Fin install Magento"
