@@ -43,7 +43,6 @@ class Magento < Server::Base
     Mage::Category.uri = "http://spreadsheets.google.com/pub?#{c.spreadsheet_categories}&hl=fr&single=true&output=csv"
     Mage::Product.uri = "http://spreadsheets.google.com/pub?#{c.spreadsheet_products}&hl=fr&single=true&output=csv"
     Mage::ProductNewAttribute.uri = "http://spreadsheets.google.com/pub?#{c.spreadsheet_products_new_attributes}&hl=fr&single=true&output=csv"
-    Mage::Image.uri = "http://picasaweb.google.com/data/feed/base/user/#{c.picasa}?alt=rss&kind=photo&hl=en_US"
   end
 
   def users
@@ -121,6 +120,7 @@ class Magento < Server::Base
     rescue Exception => e
       logger.error "Error during Catalog loading : #{e}"
     end
+      load_images api
   end
   
   def load_catalogue(api)
@@ -139,6 +139,10 @@ class Magento < Server::Base
       p.api = api
       p.create!
     end
+  end
+  
+  def load_images(api)
+    Mage::Image.new(c).load_images(api)
   end
   
   private

@@ -221,7 +221,7 @@ END_RULES
     # hack savon
     cmd = "$client = new SoapClient('#{wsdl}');"
     cmd += "echo $client->call('#{sessionId}', 'category.update', array (#{options[:parent_id]}, array (#{Mage.php_format(options)})));"
-    Mage.php(cmd) #"
+    Mage.php(cmd)
   end
   
   def find_category_by_url_key(url_key)
@@ -262,6 +262,33 @@ END_RULES
       category_parse category_tree[:children][:item] unless category_tree[:children][:item].nil?
     end
     @categories
+  end
+  
+  def create_product_media(options = {})
+    logger.debug "#Mage::Api.create_product_media #{options[:sku]}"
+   # begin
+  #    response = client.catalog_product_attribute_media_create do |soap|
+  #    soap.body = { :session_id => sessionId, 
+  #                  :sku => options[:sku],
+  #                  :productData => options
+  #                 }
+  #  end
+  #  if response.http_error? or response.soap_fault?
+  #    logger.warn "Create Product Media #{options[:image][:label]} for product #{sku} failed ! #{response.http_error} #{response.soap_fault}"
+  #  end
+  #rescue Exception => e
+  #  puts "KO #{e}"
+  #end
+    begin
+      image = options[:image]
+      cmd = "$client = new SoapClient('#{wsdl}');"
+      cmd += "echo $client->call('#{sessionId}', 'product_media.create', array ('#{options[:sku]}', array('file'=>array('name' => '#{image[:file][:name]}', 'content' => '#{image[:file][:content]}', 'mime'=> '#{image[:file][:mime]}' ), 'label' => '#{image[:label]}', 'position' => #{image[:position]} , 'types' => array('#{image[:types].join('\',\'')}'), 'exclude' => #{image[:exclude]} )));"
+      #logger.debug cmd
+      Mage.php(cmd)
+    rescue  Exception => e
+      logger.warn "Create Product Media #{options[:image][:label]} for product #{sku} failed !"
+    end
+    
   end
   
   def create_product(options = {})
