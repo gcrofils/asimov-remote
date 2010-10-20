@@ -50,7 +50,7 @@ private
         :tax_calculation_rate_id => tax_calculation_rate(options).id,
         :tax_calculation_rule => tax_calculation_rule(options).id,
         :product_tax_class_id => product_tax_class(options).id,
-        :customer_tax_class_id => customer_tax_class(options).id,
+        :customer_tax_class_id => customer_tax_class(options).id
         )
     end
   end
