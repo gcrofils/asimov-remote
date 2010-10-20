@@ -7,7 +7,6 @@ module Mage
     
     def initialize(config)
       @configuration = config
-      @tva_code = 'TVA Normale'
     end
     
     def setup
@@ -41,7 +40,7 @@ private
       TaxClass.find_by_name(name) || TaxClass.create(:class_name => name, :class_type => 'PRODUCT')
     end
     
-    def remove_all_tax_calculations
+    def delete_all_tax_calculations
       TaxCalculation.delete_all
     end
     
