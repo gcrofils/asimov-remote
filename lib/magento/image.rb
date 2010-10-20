@@ -29,7 +29,7 @@ module Mage
                       :label => m[6].gsub('_', ' '),
                       :position => 1,
                       :types => types,
-                      :exclude => 0
+                      :exclude => (types.include?('image') ? '0' : '1')
                     }
           api.create_product_media({:sku => sku, :image => image})
         end        
