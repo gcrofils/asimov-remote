@@ -35,7 +35,7 @@ private
       TaxClass.find_by_class_name(name) || TaxClass.create(:class_name => name, :class_type => 'CUSTOMER')
     end
     
-    def customer_tax_class(name)
+    def customer_tax_class(options = {})
       name      = options[:customer_class_name]
       TaxClass.find_by_class_name(name) || TaxClass.create(:class_name => name, :class_type => 'PRODUCT')
     end
