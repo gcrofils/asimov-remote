@@ -10,6 +10,7 @@ module Mage
     end
     
     def setup
+      logger.debug "Install Tax params"
       delete_all_tax_calculations
       add_tax_calculation :rate_code => 'France-normal', :rule_code => 'TVA Normal', :product_class_name => 'Taux Normal', :customer_class_name => 'Retail Customer'
     end
