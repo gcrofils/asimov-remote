@@ -718,6 +718,12 @@ end
 class TagRelation < ActiveRecord::Base 
  set_primary_key "tag_relation_id" 
 end
+class TaxCalculation < ActiveRecord::Base 
+  def self.create(attributes)
+    self.connection.execute("insert into tax_calculation(tax_calculation_rate_id, tax_calculation_rule_id, customer_tax_class_id, product_tax_class_id) values (#{attributes[:tax_calculation_rate_id]}, #{attributes[:tax_calculation_rule_id]}, #{attributes[:customer_tax_class_id)]}, #{attributes[:product_tax_class_id]}) on duplicate key update product_tax_class_id = #{attributes[:product_tax_class_id]};")
+  end
+end
+
 class TaxCalculationRate < ActiveRecord::Base 
  set_primary_key "tax_calculation_rate_id" 
 end

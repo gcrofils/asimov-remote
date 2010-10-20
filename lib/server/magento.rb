@@ -8,6 +8,7 @@ require 'magento/product_new_attribute'
 require 'magento/image'
 require 'magento/atos'
 require 'pp'
+require 'magento/tva'
 
 class Magento < Server::Base
   
@@ -53,6 +54,7 @@ class Magento < Server::Base
     install_core
     install_modules
     install_atos
+    setup_french_tva
     cleaning
   end
 
@@ -157,5 +159,9 @@ class Magento < Server::Base
   
   def admin
     @admin ||= Mage::User.find(:admin).first
+  end
+  
+  def setup_french_tva
+    Mage::Tva.new(c).setup
   end
 end
