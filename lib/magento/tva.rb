@@ -33,12 +33,12 @@ private
     
     def product_tax_class(options = {})
       name      = options[:product_class_name]
-      TaxClass.find_by_class_name(name) || TaxClass.create(:class_name => name, :class_type => 'CUSTOMER')
+      TaxClass.find_by_class_name(name) || TaxClass.create(:class_name => name, :class_type => 'PRODUCT')
     end
     
     def customer_tax_class(options = {})
       name      = options[:customer_class_name]
-      TaxClass.find_by_class_name(name) || TaxClass.create(:class_name => name, :class_type => 'PRODUCT')
+      TaxClass.find_by_class_name(name) || TaxClass.create(:class_name => name, :class_type => 'CUSTOMER')
     end
     
     def delete_all_tax_calculations
