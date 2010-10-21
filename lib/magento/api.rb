@@ -205,14 +205,24 @@ END_RULES
     @client ||= Savon::Client.new wsdlv2
   end
   
-  def create_category(options = {})
-    logger.debug "#Mage::Api.create_category #{options.inspect}"
-    # hack savon
-    cmd = "$client = new SoapClient('#{wsdl}');"
-    cmd += "echo $client->call('#{sessionId}', 'category.create', array (#{options[:parent_id]}, array (#{Mage.php_format(options)})));"
-    logger.debug cmd
-    category = category_info(MageCategory.new(Mage.php(cmd)))
-    categories << category
+  def create_category(options = {}, retries = 3)
+    logger.debug "#Mage::Api.create_category #{options[:name]}"
+    category_id = 0
+    i = 0
+    while category_id.eql?(0) and i < retries
+      logger.warn "#Mage::Api.create_category create category #{options[:name]} failed!" if i > 0
+      i = i.succ
+      cmd = "$client = new SoapClient('#{wsdl}');"
+      cmd += "echo $client->call('#{sessionId}', 'category.create', array (#{options[:parent_id]}, array (#{Mage.php_format(options)})));"
+      category_id = Mage.php(cmd).to_i
+    end
+    if category_id > 0 
+      category = category_info(MageCategory.new(category_id))
+      categories << category
+    else
+      logger.error "#Mage::Api.create_category create category #{options[:name]} failed! Will not retry..."
+      logger.debug cmd
+    end
     category
   end 
   
