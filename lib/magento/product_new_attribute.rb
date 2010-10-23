@@ -31,7 +31,7 @@ module Mage
         :backend_table => '',
         :frontend_model => '', 
         :frontend_input => att[:is_selectable].checked? ? 'select' : 'text' ,
-        :frontend_label => att[:label],
+        :frontend_label => att[:label].htmlentities.capitalize,
         :frontend_class => '', 
         :source_model => att[:is_selectable].checked? ? 'eav/entity_attribute_source_table' : '' ,
         :is_required => att[:is_required].checked?, 
