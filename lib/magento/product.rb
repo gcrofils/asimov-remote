@@ -14,7 +14,7 @@ module Mage
     
     def upsert!
       options = {
-      :name => name, 
+      :name => name.htmlentities, 
       :description => description.lipsum.htmlentities, 
       'short_description' => short_description.lipsum.htmlentities, 
       :price => price, 
@@ -38,7 +38,14 @@ module Mage
       api.product_stock_update options
       categories.each do |url_key| 
         category = api.find_category_by_url_key(url_key).first
-        api.parents_ids(category.id.to_i).each{|c| CatalogCategoryProduct.create(:category_id => c.id, :product_id => p.product_id) } unless category.nil?
+        unless category.nil?
+          api.parents_ids(category.id.to_i).do |c| 
+          begin
+            CatalogCategoryProduct.create(:category_id => c.id, :product_id => p.product_id)
+          rescue Exception => e
+            logger.warn "#Mage::Product.upsert! attach category #{c.id} to product #{name} (id: #{p.product_id}, sku: #{sku}) failed!"
+          end
+        end
       end
     end
     
