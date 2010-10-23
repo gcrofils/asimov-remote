@@ -14,7 +14,7 @@ module Mage
     
     def upsert!
       options = {
-      :name => name.htmlentities, 
+      :name => name, 
       :description => description.lipsum.htmlentities, 
       'short_description' => short_description.lipsum.htmlentities, 
       :price => price, 
