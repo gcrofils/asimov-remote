@@ -39,11 +39,11 @@ module Mage
       categories.each do |url_key| 
         category = api.find_category_by_url_key(url_key).first
         unless category.nil?
-          api.parents_ids(category.id.to_i).each do |c| 
+          api.parents_ids(category.id.to_i).each do |category_id| 
             begin
-              CatalogCategoryProduct.create(:category_id => c.id, :product_id => p.product_id)
+              CatalogCategoryProduct.create(:category_id => category_id, :product_id => p.product_id)
             rescue Exception => e
-              logger.warn "#Mage::Product.upsert! attach category #{c.id} to product #{name} (id: #{p.product_id}, sku: #{sku}) failed!"
+              logger.warn "#Mage::Product.upsert! failed to attach category #{category_id} to product #{name} (id: #{p.product_id}, sku: #{sku}) !"
             end
           end
         end
