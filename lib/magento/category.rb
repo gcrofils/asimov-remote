@@ -10,7 +10,7 @@ module Mage
     def create!
       if parent_exist?
         options = { :parent_id => parent_id,
-                    :name => name, 
+                    :name => name.htmlentities, 
                     :url_key => url_key, 
                     :description => description.lipsum.htmlentities, 
                     'meta_title' => page_title.lipsum.htmlentities, 
