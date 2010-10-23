@@ -257,7 +257,7 @@ END_RULES
 
   def get_parents_ids(category_id)
     @parents_id << category_id
-    @parents_id << get_parents_ids(find_category_by_id(category_id).first.parent_id) unless category_id <= 2
+    get_parents_ids(find_category_by_id(category_id).first.parent_id.to_i) unless category_id <= 2
     @parents_id
   end
   
