@@ -238,12 +238,27 @@ END_RULES
     categories.select{|c| c.url_key.eql?(url_key)}
   end
   
+  def find_category_by_id(id)
+    categories.select{|c| c.id.eql?(id)}
+  end
+  
   def find_product_by_sku(sku)
     products.select{|p| p.sku.eql?(sku)}
   end
 
   def categories
     @categories || category_parse(category_tree)
+  end
+
+  def parents_ids(category_id)
+    @parents_id = []
+    get_parents_ids(category_id)
+  end
+
+  def get_parents_ids(category_id)
+    @parents_id << category_id
+    @parents_id << get_parents_ids(find_category_by_id(category_id).parent_id) unless category_id <= 2
+    @parents_id
   end
   
   def category_tree

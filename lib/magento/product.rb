@@ -9,14 +9,14 @@ module Mage
     
     def category_add(url_key)
       @categories = [] if @categories.nil?
-      @categories << url_key
+      @categories << url_key unless url_key.nil?
     end
     
     def upsert!
       options = {
       :name => name, 
-      :description => description.lipsum, 
-      'short_description' => short_description.lipsum, 
+      :description => description.lipsum.htmlentities, 
+      'short_description' => short_description.lipsum.htmlentities, 
       :price => price, 
       'meta_title' => meta_title.lipsum, 
       'meta_keyword' => meta_keywords.lipsum, 
@@ -37,8 +37,8 @@ module Mage
       p = api.create_product options if p.nil?
       api.product_stock_update options
       categories.each do |url_key| 
-        c = api.find_category_by_url_key(url_key).first
-        CatalogCategoryProduct.create(:category_id => c.id, :product_id => p.product_id) unless c.nil?
+        categorie = api.find_category_by_url_key(url_key).first
+        api.parents_ids(category.id).each{|c| CatalogCategoryProduct.create(:category_id => c.id, :product_id => p.product_id) } unless categorie.nil?
       end
     end
     

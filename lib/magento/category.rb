@@ -79,7 +79,6 @@ module Mage
     @default_sort_by = 'name'
   end
   
-
   end
 
 end
