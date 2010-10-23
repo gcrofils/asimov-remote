@@ -239,7 +239,7 @@ END_RULES
   end
   
   def find_category_by_id(id)
-    categories.select{|c| c.id.eql?(id)}
+    categories.select{|c| c.id.to_i.eql?(id)}
   end
   
   def find_product_by_sku(sku)
