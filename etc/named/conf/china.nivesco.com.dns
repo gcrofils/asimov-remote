@@ -1,4 +1,4 @@
-$ORIGIN nivesco.com
+$ORIGIN nivesco.com.
 $TTL 200
 @     IN     SOA    dns.2bu.ro.     hostmaster.nivesco.com. (
                     2011012201 ; serial
