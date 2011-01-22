@@ -14,5 +14,7 @@ class Bind < Server::Base
      end
      FileUtils.ln_sf File.join(configuration[:bind_conf_path], 'named', 'etc', 'rndc.conf'), '/usr/local/bind9/etc/rndc.conf'
      FileUtils.ln_sf File.join(configuration[:bind_conf_path], 'named', 'etc', 'rndc.conf'), '/etc/rndc.conf'
+     FileUtils.ln_sf "/chroot/named/named", "/etc/init.d/named" 
+     
   end
 end
