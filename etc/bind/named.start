@@ -1,0 +1,22 @@
+#
+# named.start
+#
+#       Note: the path given to the "-c" parameter is relative
+#       to the jail's root, not the system root.
+#
+#       Add "-n2" if you have multiple CPUs
+#
+# usage: named [-c conffile] [-d debuglevel] [-f|-g] [-n number_of_cpus]
+#              [-p port] [-s] [-t chrootdir] [-u username]
+
+cd /chroot/named
+
+# make sure the debugging-output file is writable by named
+touch named.run
+chown named:named named.run
+chmod ug=rw,o=r   named.run
+
+PATH=/usr/local/bind9/sbin:$PATH named  \
+        -t /chroot/named \
+        -u named \
+        -c /etc/named.conf
