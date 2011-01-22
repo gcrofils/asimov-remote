@@ -15,6 +15,8 @@ class Bind < Server::Base
      FileUtils.ln_sf File.join(configuration[:bind_conf_path], 'named', 'etc', 'rndc.conf'), '/usr/local/bind9/etc/rndc.conf'
      FileUtils.ln_sf File.join(configuration[:bind_conf_path], 'named', 'etc', 'rndc.conf'), '/etc/rndc.conf'
      FileUtils.ln_sf "/chroot/named/named", "/etc/init.d/named" 
-     
+     GeoIP = File.join('/', 'chroot', 'lib', 'share', 'GeoIP')
+     FileUtils.mkdir_p GeoIP
+     FileUtils.cp '/usr/local/share/GeoIP/GeoIP.dat', File.join(GeoIP, 'GeoIP.dat')
   end
 end
