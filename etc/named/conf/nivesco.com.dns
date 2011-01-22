@@ -8,7 +8,6 @@ $TTL 200
                     86400 )    ; minimum TTL of 1 day
 
       IN     NS     dns.2bu.ro.
-      IN     NS     sdns2.ovh.net.
 
       IN     MX     1      caffeine.2bu.ro.
 
