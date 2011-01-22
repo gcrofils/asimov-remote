@@ -14,6 +14,7 @@ $TTL 200
              IN     A       174.129.212.2
              IN     A       75.101.145.87
              IN     A       75.101.163.44
+             IN     A       75.101.163.48
              
 *            IN     CNAME   nivesco.com.
 www          IN     CNAME   nivesco.com.
