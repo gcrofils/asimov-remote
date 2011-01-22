@@ -1,5 +1,6 @@
 
 require 'server'
+require 'server/bind'
 require 'settings'
 
 puts "Configuration BIND..."
