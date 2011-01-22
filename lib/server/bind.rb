@@ -9,6 +9,8 @@ class Bind < Server::Base
 
   def setup
      FileUtils.cp_r File.join(ASIMOV_ROOT, 'etc', 'named'), configuration[:bind_conf_path]
-     FileUtils.mv File.join(configuration[:bind_conf_path], 'named', 'named.*'), configuration[:bind_conf_path]
+     %w[perms start].each do |ext|
+       FileUtils.mv File.join(configuration[:bind_conf_path], 'named', "named.#{ext}"), File.join(configuration[:bind_conf_path], "named.#{ext}")
+     end
   end
 end
