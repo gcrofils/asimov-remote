@@ -67,7 +67,11 @@ module Server
     end
     
     def load_configuration
-      default_settings.merge! Settings.configuration[self.class.name.downcase].flatten!
+      if Settings.configuration
+        default_settings.merge! Settings.configuration[self.class.name.downcase].flatten!
+      else
+        default_settings
+      end
     end
     
   end
