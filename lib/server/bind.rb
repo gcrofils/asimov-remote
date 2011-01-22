@@ -12,5 +12,7 @@ class Bind < Server::Base
      %w[perms start].each do |ext|
        FileUtils.mv File.join(configuration[:bind_conf_path], 'named', "named.#{ext}"), File.join(configuration[:bind_conf_path], "named.#{ext}")
      end
+     FileUtils.ln_s File.join(configuration[:bind_conf_path], 'named', 'etc', 'rndc.conf'), '/usr/local/etc/rndc.conf'
+     FileUtils.ln_s File.join(configuration[:bind_conf_path], 'named', 'etc', 'rndc.conf'), '/etc/rndc.conf'
   end
 end
