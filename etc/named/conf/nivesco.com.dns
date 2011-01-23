@@ -1,7 +1,7 @@
 $ORIGIN nivesco.com.
 $TTL 200
 @     IN     SOA    dns.2bu.ro.     hostmaster.nivesco.com. (
-                    2011012201 ; serial
+                    2011012202 ; serial
                     21600      ; refresh after 6 hours
                     3600       ; retry after 1 hour
                     604800     ; expire after 1 week
@@ -14,7 +14,7 @@ $TTL 200
              IN     A       174.129.212.2
              IN     A       75.101.145.87
              IN     A       75.101.163.44
-             IN     A       75.101.163.48
+             IN     A       75.101.163.49
              
 *            IN     CNAME   nivesco.com.
 www          IN     CNAME   nivesco.com.

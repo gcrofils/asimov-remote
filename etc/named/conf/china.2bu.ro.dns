@@ -1,0 +1,30 @@
+$ORIGIN 2bu.ro.
+$TTL 200
+@     IN     SOA    dns.2bu.ro.     hostmaster.2bu.ro. (
+                    2011012202 ; serial
+                    21600      ; refresh after 6 hours
+                    3600       ; retry after 1 hour
+                    604800     ; expire after 1 week
+                    86400 )    ; minimum TTL of 1 day
+
+      IN     NS     dns.2bu.ro.
+      IN     NS     sdns2.ovh.net.
+      
+
+      IN     MX     1      caffeine.2bu.ro.
+
+             IN     A       175.41.149.177
+             IN     A       46.51.169.223
+             
+h            IN     A       174.129.212.2
+h            IN     A       75.101.145.87
+h            IN     A       75.101.163.44
+ap           IN     A       175.41.149.177
+eu           IN     A       46.51.169.223
+us-west      IN     A       50.18.56.191
+dns          IN     A       50.18.63.110
+             
+*            IN     CNAME   2bu.ro.
+www          IN     CNAME   2bu.ro.
+dirty-caffeine-1   IN    CNAME     caffeine.2bu.ro.
+stormy-chewbacca-1 IN    CNAME     bijouterie-delhaye.com.
