@@ -1,5 +1,5 @@
 $TTL 200
-@     IN     SOA    dns.2bu.ro.     hostmaster.nivesco.com. (
+@     IN     SOA    dns.2bu.ro.     hostmaster.nivesco.fr. (
                     2011012301 ; serial
                     21600      ; refresh after 6 hours
                     3600       ; retry after 1 hour
@@ -11,7 +11,9 @@ $TTL 200
 
       IN     MX     1      caffeine.2bu.ro.
 
-             IN     A       175.41.149.177
+             IN     A       174.129.212.2
+             IN     A       75.101.145.87
+             IN     A       75.101.163.44
              
-*            IN     CNAME   nivesco.com.
-www          IN     CNAME   nivesco.com.
+*            IN     CNAME   nivesco.fr.
+www          IN     CNAME   nivesco.fr.

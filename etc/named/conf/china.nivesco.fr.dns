@@ -1,5 +1,5 @@
 $TTL 200
-@     IN     SOA    dns.2bu.ro.     hostmaster.nivesco.com. (
+@     IN     SOA    dns.2bu.ro.     hostmaster.nivesco.fr. (
                     2011012301 ; serial
                     21600      ; refresh after 6 hours
                     3600       ; retry after 1 hour

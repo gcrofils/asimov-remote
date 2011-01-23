@@ -1,5 +1,5 @@
 $TTL 200
-@     IN     SOA    dns.2bu.ro.     hostmaster.secondbureau.com. (
+@     IN     SOA    dns.2bu.ro.     hostmaster.secondbureau.fr. (
                     2011012301 ; serial
                     21600      ; refresh after 6 hours
                     3600       ; retry after 1 hour
@@ -21,13 +21,5 @@ $TTL 200
              
 jobboard            IN    A         213.186.33.5
              
-*                   IN    CNAME     secondbureau.com.
-www                 IN    CNAME     secondbureau.com.
-demo-bsconsult      IN    CNAME     demo-baskingshark.heroku.com
-docs                IN    CNAME     ghs.google.com
-google17e3e581444e3c7d  IN  CNAME   google.com
-mail                IN    CNAME     ghs.google.com
-sites               IN    CNAME     ghs.google.com
-
-jobboard            IN    TXT       "d|We need you ! (maybe)"
-jobboard            IN    TXT       "t|Second Bureau | Job Board"
+*                   IN    CNAME     secondbureau.fr.
+www                 IN    CNAME     secondbureau.fr.
