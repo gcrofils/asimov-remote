@@ -11,7 +11,7 @@ $TTL 200
 
       IN     MX     1      caffeine.2bu.ro.
 
-             IN     A       50.18.56.191
+             IN     A       46.51.169.223
              
 *            IN     CNAME   nivesco.com.
 www          IN     CNAME   nivesco.com.
