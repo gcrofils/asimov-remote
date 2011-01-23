@@ -22,6 +22,7 @@ ap           IN     A       175.41.149.177
 eu           IN     A       46.51.169.223
 us-west      IN     A       50.18.56.191
 dns          IN     A       50.18.63.110
+caffeine     IN     A       79.125.123.65
              
 *            IN     CNAME   2bu.ro.
 www          IN     CNAME   2bu.ro.
