@@ -1,13 +1,16 @@
 $TTL 200
 @     IN     SOA    dns.2bu.ro.     hostmaster.2bu.ro. (
-                    2011012305 ; serial
+                    2011012401 ; serial
                     21600      ; refresh after 6 hours
                     3600       ; retry after 1 hour
                     604800     ; expire after 1 week
                     86400 )    ; minimum TTL of 1 day
 
-      IN     NS     dns.2bu.ro.
-      IN     NS     sdns2.ovh.net.
+      IN    NS    dns.2bu.ro.
+      IN    NS    sdns2.ovh.net.
+      IN    NS    ns0.xname.org.
+      IN    NS    ns1.xname.org.
+      IN    NS    ns2.xname.org.
 
       IN     MX     1      caffeine.2bu.ro.
 
