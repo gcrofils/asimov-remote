@@ -1,8 +1,8 @@
 include "common/soa.dns";
 
-include "common/mx_caffeine.dns"
+include "common/mx_caffeine.dns";
 
-include "common/a_heroku.dns"
+include "common/a_heroku.dns";
              
 *            IN     CNAME   kemola.com.
 www          IN     CNAME   kemola.com.

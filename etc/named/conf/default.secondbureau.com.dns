@@ -2,7 +2,7 @@ include "common/soa.dns";
 
 include "common/mx_google.dns";
 
-include "common/a_heroku.dns"
+include "common/a_heroku.dns";
              
 jobboard            IN    A         213.186.33.5
 ap                  IN    A         175.41.149.177

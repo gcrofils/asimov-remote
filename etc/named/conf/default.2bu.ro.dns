@@ -1,8 +1,8 @@
 include "common/soa.dns";
 
-include "common/mx_caffeine.dns"
+include "common/mx_caffeine.dns";
 
-include "common/a_heroku.dns"
+include "common/a_heroku.dns";
              
 h            IN     A       174.129.212.2
 h            IN     A       75.101.145.87
