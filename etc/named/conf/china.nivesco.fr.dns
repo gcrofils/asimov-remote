@@ -1,8 +1,1 @@
-$include "common/soa.dns";
-
-$include "common/mx_caffeine.dns";
-
-$include "common/a_proxy.dns";
-             
-*            IN     CNAME   nivesco.fr.
-www          IN     CNAME   nivesco.fr.
+$include "templates/china.proxy.caffeine.dns"

@@ -1,10 +1,1 @@
-$include "common/soa.dns";
-
-$include "common/mx_caffeine.dns";
-
-$include "common/a_heroku.dns";
-
-ap          IN    A         175.41.149.177
-             
-*            IN     CNAME   nivesco.com.
-www          IN     CNAME   nivesco.com.
+$include "templates/default.heroku.caffeine.dns"

@@ -1,8 +1,1 @@
-$include "common/soa.dns";
-
-$include "common/mx_caffeine.dns";
-
-$include "common/a_heroku.dns";
-             
-*            IN     CNAME   kemola.fr.
-www          IN     CNAME   kemola.fr.
+$include "templates/default.heroku.caffeine.dns"
