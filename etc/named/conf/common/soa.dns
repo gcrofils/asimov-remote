@@ -8,4 +8,3 @@ $TTL 86400
 
       IN    NS    dns.2bu.ro.
       IN    NS    sdns2.ovh.net.
-      
