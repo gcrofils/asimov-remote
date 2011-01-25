@@ -1,8 +1,8 @@
-include "common/soa.dns";
+$include "common/soa.dns";
 
-include "common/mx_google.dns";
+$include "common/mx_google.dns";
 
-include "common/a_proxy.dns";
+$include "common/a_proxy.dns";
              
 jobboard            IN    A         213.186.33.5
              
