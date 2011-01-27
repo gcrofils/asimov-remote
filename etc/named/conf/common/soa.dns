@@ -7,4 +7,4 @@ $TTL 21600
                     86400 )    ; minimum TTL of 1 day
 
       IN    NS    dns.2bu.ro.
-      IN    NS    sdns2.ovh.net.
+      IN    NS    ns0.2bu.ro.
