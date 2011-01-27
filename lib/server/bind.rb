@@ -18,5 +18,6 @@ class Bind < Server::Base
      geoIP = File.join('/', 'chroot', 'named', 'usr', 'local', 'share', 'GeoIP')
      FileUtils.mkdir_p geoIP
      FileUtils.cp '/usr/local/share/GeoIP/GeoIP.dat', File.join(geoIP, 'GeoIP.dat')
+     system ('sh /chroot/named.perms')
   end
 end
