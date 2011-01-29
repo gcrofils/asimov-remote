@@ -1,0 +1,23 @@
+[DEFAULT]
+#ignoreip = 127.0.0.1
+bantime  = 90000
+#maxretry = 3
+destemail = fail2ban-ns0.2bu.ro@secondbureau.com
+banaction = shorewall
+
+[ssh]
+enabled = true
+
+[named-refused-udp]
+enabled  = false
+port     = domain,953
+protocol = udp
+filter   = named-refused
+logpath  = /chroot/named/logs/security.log
+
+[named-refused-tcp]
+enabled  = false
+port     = domain,953
+protocol = tcp
+filter   = named-refused
+logpath  = /chroot/named/logs/security.log
