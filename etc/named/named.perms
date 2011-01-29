@@ -38,8 +38,8 @@ chown root:named  var/run/
 chmod ug=rwx,o=rx var/run/
 
 # named has to be able to create logfiles
-chown root:named  logs/
-chmod ug=rwx,o=rx logs/
+chown -R named:named  logs/
+chmod -R ug=rwx,o=rx logs/
 
 # named is executable
 chmod u=rwx,og=rx named
