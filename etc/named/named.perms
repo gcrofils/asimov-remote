@@ -39,7 +39,8 @@ chmod ug=rwx,o=rx var/run/
 
 # named has to be able to create logfiles
 chown -R named:named  logs/
-chmod -R ug=rwx,o=rx logs/
+chmod ug=rwx,o=rx logs/
+chmod ug=rw,o=r logs/*.log
 
 # named is executable
 chmod u=rwx,og=rx named
