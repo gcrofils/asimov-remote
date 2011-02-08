@@ -16,3 +16,5 @@ sites               IN    CNAME     ghs.google.com.
 
 jobboard            IN    TXT       "d|We need you ! (maybe)"
 jobboard            IN    TXT       "t|Second Bureau | Job Board"
+
+google._domainkey IN TXT "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCXYuS5eawhHY4UgXCgp+QKwN0UrgXpppKEzlfxHDDCMAViJtdSdh8l99MNQRciPsxLiBdEgdSk6LmIKtjYBHeu6IYSK2JJdRkdP/GXQzustWKBbYCFNkpdgY5b7QibNveucjRk+UkJQGxAWw7HOesCUEFBpiGpRSXVTjk1jk/3zQIDAQAB"
