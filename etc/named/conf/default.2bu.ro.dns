@@ -12,7 +12,7 @@ us-west      IN     A       50.18.56.191
 dns          IN     A       50.18.63.110
 caffeine     IN     A       79.125.123.65
 ns0          IN     A       122.248.253.86
-qiushuo      IN      A       46.51.168.251
+qiushuo      IN      A       46.51.173.247
              
 $include "common/cname_base.dns";
 
