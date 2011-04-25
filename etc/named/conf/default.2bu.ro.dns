@@ -18,4 +18,5 @@ $include "common/cname_base.dns";
 
 dirty-caffeine-1   IN    CNAME     caffeine
 stormy-chewbacca-1  IN    CNAME     bijouterie-delhaye.com.
-cn                  IN    CNAME     ap             
+cn                  IN    CNAME     ap     
+msg                 IN    CNAME     h        
