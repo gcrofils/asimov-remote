@@ -7,6 +7,7 @@ $include "common/a_heroku.dns";
 jobboard            IN    A         213.186.33.5
 ap                  IN    A         175.41.149.177
 beijing             IN    A         61.135.155.215
+ftp                 IN    A         46.137.90.145
              
 *                   IN    CNAME     secondbureau.com.
 www                 IN    CNAME     secondbureau.com.
