@@ -6,7 +6,7 @@ $include "common/a_proxy.dns";
              
 jobboard            IN    A         213.186.33.5
 beijing             IN    A         61.135.155.215
-ftp                 IN    A         46.137.90.145
+ftp                 IN    A         46.137.85.114
              
 *                   IN    CNAME     secondbureau.com.
 www                 IN    CNAME     secondbureau.com.
