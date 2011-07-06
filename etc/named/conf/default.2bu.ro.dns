@@ -22,6 +22,7 @@ qiushuo      IN      A       46.51.173.247
 $include "common/cname_base.dns";
 
 dirty-caffeine-1   IN    CNAME     caffeine
+funky-factory-1   IN    CNAME     caffeine
 stormy-chewbacca-1  IN    CNAME     bijouterie-delhaye.com.
 cn                  IN    CNAME     ap     
 msg                 IN    CNAME     h        
