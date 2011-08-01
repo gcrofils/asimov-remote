@@ -9,7 +9,8 @@ $include "common/a_proxy.dns";
 h            IN     A       174.129.212.2
 h            IN     A       75.101.145.87
 h            IN     A       75.101.163.44
-ap           IN     A       175.41.149.177
+#ap           IN     A       175.41.149.177  (until 01/08/2011)
+ap           IN     A       122.248.235.250
 eu           IN     A       46.51.169.223
 us-west      IN     A       50.18.56.191
 dns          IN     A       50.18.63.110
