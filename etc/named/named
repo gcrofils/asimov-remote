@@ -1,0 +1,23 @@
+#!/bin/sh
+#
+# named
+#
+
+export PATH=/usr/local/bind9/sbin:$PATH       # needed for rndc
+
+case "$1" in
+  start)
+        # Start daemons.
+        echo -n "Starting named: "
+        sh /chroot/named.start
+        echo
+        ;;
+  stop)
+        # Stop daemons.
+        echo -n "Shutting down named: "
+        rndc stop
+        echo "done"
+        ;;
+esac
+
+exit 0

@@ -1,3 +1,5 @@
+require 'server/nginx'
+require 'server/mysql'
 require 'magento/magento_base'
 require 'magento/api'
 require 'magento/rule'
