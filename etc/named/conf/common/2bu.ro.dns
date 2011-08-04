@@ -60,10 +60,14 @@ git                 IN    CNAME     gitpool
 ;#
 ;######################
 
-cloudy-storm-1        IN      CNAME     ap-northeast
+; no cname here because of MX Records
+;cloudy-storm-1        IN      CNAME     ap-northeast
+;crispy-nuts-1         IN      CNAME     gitpool
+cloudy-storm-1        IN      A     175.41.255.24
+crispy-nuts-1         IN      A     175.41.255.66 
 dirty-caffeine-1      IN      CNAME     caffeine
 stormy-chewbacca-1    IN      CNAME     bijouterie-delhaye.com.
-crispy-nuts-1         IN      CNAME     gitpool
+
 
 
 ;######################
