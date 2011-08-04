@@ -5,7 +5,7 @@ beijing             IN    A         61.135.155.215
 ftp                 IN    A         46.137.85.114
              
 
-# Google Docs
+; Google Docs
 docs                    IN    CNAME     ghs.google.com.
 google17e3e581444e3c7d  IN    CNAME     google.com.
 mail                    IN    CNAME     ghs.google.com.
