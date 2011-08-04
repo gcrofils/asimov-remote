@@ -10,4 +10,3 @@ $include "common/cname_base.dns";
 
 $include "common/2bu.ro.dns";
 
-

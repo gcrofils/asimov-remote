@@ -31,7 +31,7 @@ gitpool       IN     A      175.41.255.66     ; Git Server (EC2 AP-NorthEast)
 ;#
 ;######################
 
-thematrix     IN     A      61.135.155.215    # Beijing
+thematrix     IN     A      61.135.155.215    ; Beijing
 
 
 ;######################
