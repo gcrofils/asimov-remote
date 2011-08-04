@@ -1,3 +1,12 @@
+$include "common/soa.dns";
+
+$include "common/mx_caffeine.dns";
+
+$include "common/mx_users_caffeine.dns";
+
+$include "common/mx_hostnames_caffeine.dns";
+
+$include "common/cname_base.dns";
 
 ;######################
 ;#

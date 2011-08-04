@@ -1,12 +1,5 @@
-$include "common/soa.dns";
-
-$include "common/mx_caffeine.dns";
-
-$include "common/mx_users_caffeine.dns";
-
-$include "common/a_heroku.dns";
-
-$include "common/cname_base.dns";
 
 $include "common/2bu.ro.dns";     
+
+$include "common/a_heroku.dns";
 
