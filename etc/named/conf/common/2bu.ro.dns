@@ -49,8 +49,6 @@ thematrix     IN     A      61.135.155.215    ; Beijing
 ;#
 ;######################
 
-cn                  IN    CNAME     ap-southeast
-msg                 IN    CNAME     ap-southeast
 git                 IN    CNAME     gitpool
 
 
