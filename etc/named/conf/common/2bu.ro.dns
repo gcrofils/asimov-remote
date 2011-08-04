@@ -1,0 +1,70 @@
+
+######################
+#
+# proxies
+# Reminder : Http Proxy needs to be changed
+# in common/a_proxy.dns
+#
+######################
+
+ap-southeast        IN     A       122.248.235.250
+ap-northeast        IN     A       175.41.255.24
+us-west             IN     A       50.18.176.201
+
+
+######################
+#
+# Services
+#
+######################
+
+caffeine      IN     A      79.125.123.65     # SMTP (EC2 Europe)
+ftp           IN     A      46.137.85.114     # FTP (EC2 Europe)
+dns           IN     A      50.18.63.110      # Primary DNS (EC2 US-West)
+ns0           IN     A      122.248.253.86    # Secondary DNS (EC2 AP-SouthEast)
+gitpool       IN     A      175.41.255.66     # Git Server (EC2 AP-NorthEast)
+
+
+######################
+#
+# Office Server
+#
+######################
+
+thematrix     IN     A      61.135.155.215    # Beijing
+
+
+######################
+#
+# Aliases
+#
+######################
+
+cn                  IN    CNAME     ap-southeast
+msg                 IN    CNAME     ap-southeast
+git                 IN    CNAME     gitpool
+
+
+######################
+#
+# Hostnames
+#
+######################
+
+cloudy-storm-1        IN      CNAME     ap-northeast
+dirty-caffeine-1      IN      CNAME     caffeine
+stormy-chewbacca-1    IN      CNAME     bijouterie-delhaye.com.
+crispy-nuts-1         IN      CNAME     gitpool
+
+
+######################
+#
+# Archives
+#
+######################
+
+#   ap           IN     A       175.41.149.177  (until 01/08/2011)
+
+# dirty-caffeine-2     IN      CNAME     caffeine
+# funky-pizza-1        IN      CNAME     caffeine
+
