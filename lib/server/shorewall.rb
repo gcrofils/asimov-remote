@@ -2,7 +2,7 @@ class Shorewall < Server::Base
 
   def default_settings
   {
-          :shorewall_conf_path 		=> "/etc/shorewall/",
+          :shorewall_conf_path 		=> "/etc/",
 	  :shorewall_start_filename	=> "/etc/default/shorewall"
   }
   end
