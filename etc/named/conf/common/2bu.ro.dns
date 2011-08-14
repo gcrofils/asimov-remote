@@ -8,30 +8,47 @@ $include "common/mx_hostnames_caffeine.dns";
 
 $include "common/cname_base.dns";
 
+
 ;######################
 ;#
-;# proxies
+;# Hostnames
+;#
+;######################
+
 ;# Reminder : Http Proxy needs to be changed
 ;# in common/a_proxy.dns
+
+cloudy-storm-1        	IN      A     	175.41.255.24		; EC2 AP-NorthEast
+
+;# others
+
+funky-pizza-2		IN	A	122.248.235.250		; EC2 AP-SouthEast
+heavy-waterfall-1	IN	A	122.248.253.86		; EC2 AP-SouthEast
+crispy-nuts-1         	IN      A     	175.41.255.66 		; EC2 AP-NorthEast
+dirty-caffeine-3      	IN      A     	79.125.123.65		; EC2 Europe
+clumsy-burst-1		IN	A	46.137.85.114		; EC2 Europe
+geeky-cloud-1		IN	A	50.18.63.110		; EC2 US-West
+heroic-mosquito-1	IN	A	50.18.176.201		; EC2 US-West
+
+;######################
+;#
+;# Aliases
 ;#
 ;######################
 
-ap-southeast        IN     A       122.248.235.250
-ap-northeast        IN     A       175.41.255.24
-us-west             IN     A       50.18.176.201
+;# proxies
 
+ap-northeast        	IN     CNAME       cloudy-storm-1
+ap-southeast        	IN     CNAME       funky-pizza-2
+us-west             	IN     CNAME       heroic-mosquito-1
 
-;######################
-;#
 ;# Services
-;#
-;######################
 
-caffeine      IN     A      79.125.123.65     ; SMTP (EC2 Europe)
-ftp           IN     A      46.137.85.114     ; FTP (EC2 Europe)
-dns           IN     A      50.18.63.110      ; Primary DNS (EC2 US-West)
-ns0           IN     A      122.248.253.86    ; Secondary DNS (EC2 AP-SouthEast)
-gitpool       IN     A      175.41.255.66     ; Git Server (EC2 AP-NorthEast)
+caffeine      		IN     CNAME      dirty-caffeine-3     	; SMTP 
+ftp           		IN     CNAME      clumsy-burst-1     	; FTP 
+dns           		IN     CNAME      geeky-cloud-1      	; Primary DNS
+ns0           		IN     CNAME      heavy-waterfall-1    	; Secondary DNS 
+git       		IN     CNAME      crispy-nuts-1     	; Git Server
 
 
 ;######################
@@ -42,31 +59,6 @@ gitpool       IN     A      175.41.255.66     ; Git Server (EC2 AP-NorthEast)
 
 thematrix     IN     A      61.135.155.215    ; Beijing
 
-
-;######################
-;#
-;# Aliases
-;#
-;######################
-
-git                 IN    CNAME     gitpool
-
-
-;######################
-;#
-;# Hostnames
-;#
-;######################
-
-; no cname here because of MX Records
-;cloudy-storm-1        IN      CNAME     ap-northeast
-;crispy-nuts-1         IN      CNAME     gitpool
-;dirty-caffeine-1      IN      CNAME     caffeine
-cloudy-storm-1        IN      A     175.41.255.24
-crispy-nuts-1         IN      A     175.41.255.66 
-dirty-caffeine-3      IN      A     79.125.123.65
-
-stormy-chewbacca-1    IN      CNAME     bijouterie-delhaye.com.
 
 
 
