@@ -46,8 +46,8 @@ us-west             	IN     CNAME       heroic-mosquito-1
 
 caffeine      		IN     A      	  79.125.123.65     	; SMTP (No CNAME record !)
 ftp           		IN     CNAME      clumsy-burst-1     	; FTP 
-dns           		IN     CNAME      geeky-cloud-1      	; Primary DNS
-ns0           		IN     CNAME      heavy-waterfall-1    	; Secondary DNS 
+dns           		IN     A      	  50.18.63.110      	; Primary DNS (No CNAME record !)
+ns0           		IN     A      	  122.248.253.86    	; Secondary DNS (No CNAME record !)
 git       		IN     CNAME      crispy-nuts-1     	; Git Server
 
 
