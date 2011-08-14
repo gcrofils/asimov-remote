@@ -44,7 +44,7 @@ us-west             	IN     CNAME       heroic-mosquito-1
 
 ;# Services
 
-caffeine      		IN     CNAME      dirty-caffeine-3     	; SMTP 
+caffeine      		IN     A      	  79.125.123.65     	; SMTP (No CNAME record !)
 ftp           		IN     CNAME      clumsy-burst-1     	; FTP 
 dns           		IN     CNAME      geeky-cloud-1      	; Primary DNS
 ns0           		IN     CNAME      heavy-waterfall-1    	; Secondary DNS 
