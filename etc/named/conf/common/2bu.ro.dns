@@ -19,16 +19,17 @@ $include "common/cname_base.dns";
 ;# in common/a_proxy.dns
 
 cloudy-storm-1        	IN      A     	175.41.255.24		; EC2 AP-NorthEast
+cloudy-storm-2        	IN      A     	175.41.255.24		; EC2 AP-NorthEast
 
 ;# others
 
-funky-pizza-2		IN	A	122.248.235.250		; EC2 AP-SouthEast
-heavy-waterfall-1	IN	A	122.248.253.86		; EC2 AP-SouthEast
+funky-pizza-2		        IN	A	122.248.235.250		; EC2 AP-SouthEast
+heavy-waterfall-1	      IN	A	122.248.253.86		; EC2 AP-SouthEast
 crispy-nuts-1         	IN      A     	175.41.255.66 		; EC2 AP-NorthEast
 dirty-caffeine-3      	IN      A     	79.125.123.65		; EC2 Europe
-clumsy-burst-1		IN	A	46.137.85.114		; EC2 Europe
-geeky-cloud-1		IN	A	50.18.63.110		; EC2 US-West
-heroic-mosquito-1	IN	A	50.18.176.201		; EC2 US-West
+clumsy-burst-1		      IN	A	46.137.85.114		; EC2 Europe
+geeky-cloud-1		        IN	A	50.18.63.110		; EC2 US-West
+heroic-mosquito-1	      IN	A	50.18.176.201		; EC2 US-West
 
 ;######################
 ;#
@@ -38,7 +39,7 @@ heroic-mosquito-1	IN	A	50.18.176.201		; EC2 US-West
 
 ;# proxies
 
-ap-northeast        	IN     CNAME       cloudy-storm-1
+ap-northeast        	IN     CNAME       cloudy-storm-2
 ap-southeast        	IN     CNAME       funky-pizza-2
 us-west             	IN     CNAME       heroic-mosquito-1
 
@@ -48,7 +49,7 @@ caffeine      		IN     A      	  79.125.123.65     	; SMTP (No CNAME record !)
 ftp           		IN     CNAME      clumsy-burst-1     	; FTP 
 dns           		IN     A      	  50.18.63.110      	; Primary DNS (No CNAME record !)
 ns0           		IN     A      	  122.248.253.86    	; Secondary DNS (No CNAME record !)
-git       		IN     CNAME      crispy-nuts-1     	; Git Server
+git       		    IN     CNAME      crispy-nuts-1     	; Git Server
 
 
 ;######################
