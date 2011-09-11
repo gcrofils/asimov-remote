@@ -51,6 +51,7 @@ dns           		IN     A      	  50.18.63.110      	; Primary DNS (No CNAME reco
 ns0           		IN     A      	  122.248.253.86    	; Secondary DNS (No CNAME record !)
 git       		    IN     CNAME      crispy-nuts-1     	; Git Server
 
+;# Heroku App on Ceda
 demo-utown      IN CNAME ar.herokuapp.com.
 
 ;######################
