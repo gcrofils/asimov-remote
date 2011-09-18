@@ -53,6 +53,8 @@ git       		    IN     CNAME      crispy-nuts-1     	; Git Server
 
 ;# Heroku App on Ceda
 demo-utown      IN CNAME ar.herokuapp.com.
+demo-jeu-maille IN CNAME ar.herokuapp.com.
+
 
 ;######################
 ;#
