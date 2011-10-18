@@ -23,7 +23,7 @@ cloudy-storm-2        	IN      A     	175.41.255.24		; EC2 AP-NorthEast
 
 ;# others
 
-funky-pizza-2		        IN	A	122.248.236.130		; EC2 AP-SouthEast
+;#funky-pizza-2		        IN	A	122.248.236.130		; EC2 AP-SouthEast STOPPED 18/10/2011
 heavy-waterfall-2	      IN	A	122.248.253.86		; EC2 AP-SouthEast
 crispy-nuts-1         	IN  A 175.41.255.66 		; EC2 AP-NorthEast
 dirty-caffeine-3      	IN  A 79.125.123.65		; EC2 Europe
@@ -40,7 +40,7 @@ heroic-mosquito-1	      IN	A	50.18.176.201		; EC2 US-West
 ;# proxies
 
 ap-northeast        	IN     CNAME       cloudy-storm-2
-ap-southeast        	IN     CNAME       funky-pizza-2
+;#ap-southeast        	IN     CNAME       funky-pizza-2 ; STOPPED 18/10/2011
 us-west             	IN     CNAME       heroic-mosquito-1
 
 ;# Services
