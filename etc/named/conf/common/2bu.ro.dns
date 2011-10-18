@@ -24,7 +24,7 @@ cloudy-storm-2        	IN      A     	175.41.255.24		; EC2 AP-NorthEast
 ;# others
 
 funky-pizza-2		        IN	A	122.248.236.130		; EC2 AP-SouthEast
-heavy-waterfall-1	      IN	A	122.248.253.86		; EC2 AP-SouthEast
+heavy-waterfall-2	      IN	A	122.248.253.86		; EC2 AP-SouthEast
 crispy-nuts-1         	IN  A 175.41.255.66 		; EC2 AP-NorthEast
 dirty-caffeine-3      	IN  A 79.125.123.65		; EC2 Europe
 clumsy-burst-1		      IN	A	46.137.85.114		; EC2 Europe
@@ -46,7 +46,7 @@ us-west             	IN     CNAME       heroic-mosquito-1
 ;# Services
 
 caffeine      		IN     A      	  79.125.123.65     	; SMTP (No CNAME record !)
-ftp           		IN     CNAME      clumsy-burst-1     	; FTP 
+ftp           		IN     CNAME      clumsy-burst-1     	; FTP
 dns           		IN     A      	  50.18.63.110      	; Primary DNS (No CNAME record !)
 ns0           		IN     A      	  122.248.253.86    	; Secondary DNS (No CNAME record !)
 git       		    IN     CNAME      crispy-nuts-1     	; Git Server
@@ -78,4 +78,5 @@ thematrix     IN     A      61.135.155.215    ; Beijing
 
 ;# dirty-caffeine-2     IN      CNAME     caffeine
 ;# funky-pizza-1        IN      CNAME     caffeine
+;# heavy-waterfall-2	      IN	A	122.248.253.86		; EC2 AP-SouthEast (until 18/10/2011)
 
