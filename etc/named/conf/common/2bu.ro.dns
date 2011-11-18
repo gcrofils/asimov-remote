@@ -18,18 +18,18 @@ $include "common/cname_base.dns";
 ;# Reminder : Http Proxy needs to be changed
 ;# in common/a_proxy.dns
 
-cloudy-storm-1        	IN      A     	175.41.255.24		; EC2 AP-NorthEast
 cloudy-storm-2        	IN      A     	175.41.255.24		; EC2 AP-NorthEast
+cloudy-storm-3        	IN      A     	175.41.255.24		; EC2 AP-NorthEast
 
 ;# others
 
 ;funky-pizza-2		        IN	A	122.248.236.130		; EC2 AP-SouthEast STOPPED 18/10/2011
-heavy-waterfall-2	      IN	A	122.248.253.86		; EC2 AP-SouthEast
+heavy-waterfall-3	      IN	A	122.248.253.86		; EC2 AP-SouthEast
 ;crispy-nuts-1         	IN  A 175.41.255.66 		; EC2 AP-NorthEast STOPPED 18/10/2011
 dirty-caffeine-3      	IN  A 79.125.123.65		; EC2 Europe
 clumsy-burst-1		      IN	A	46.137.85.114		; EC2 Europe
-geeky-cloud-1		        IN	A	50.18.63.110		; EC2 US-West
-heroic-mosquito-1	      IN	A	50.18.176.201		; EC2 US-West
+geeky-cloud-2		        IN	A	50.18.63.110		; EC2 US-West
+heroic-mosquito-2	      IN	A	50.18.176.201		; EC2 US-West
 
 ;######################
 ;#
@@ -39,9 +39,9 @@ heroic-mosquito-1	      IN	A	50.18.176.201		; EC2 US-West
 
 ;# proxies
 
-ap-northeast        	IN     CNAME       cloudy-storm-2
+ap-northeast        	IN     CNAME       cloudy-storm-3
 ;#ap-southeast        	IN     CNAME       funky-pizza-2 ; STOPPED 18/10/2011
-us-west             	IN     CNAME       heroic-mosquito-1
+us-west             	IN     CNAME       heroic-mosquito-2
 
 ;# Services
 
