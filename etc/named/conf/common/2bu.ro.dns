@@ -56,6 +56,9 @@ demo-utown      IN CNAME ar.herokuapp.com.
 demo-jeu-maille IN CNAME ar.herokuapp.com.
 jeu-maille	IN CNAME ar.herokuapp.com.
 
+;# demos
+acapital IN A 50.18.155.172
+
 
 ;######################
 ;#
