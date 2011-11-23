@@ -19,7 +19,7 @@ $include "common/cname_base.dns";
 ;# in common/a_proxy.dns
 
 
-cloudy-storm-3        	IN      A     	175.41.255.24		; EC2 AP-NorthEast
+cloudy-storm-4        	IN      A     	175.41.255.24		; EC2 AP-NorthEast
 
 ;# others
 
@@ -39,7 +39,7 @@ heroic-mosquito-2	      IN	A	50.18.176.201		; EC2 US-West
 
 ;# proxies
 
-ap-northeast        	IN     CNAME       cloudy-storm-3
+ap-northeast        	IN     CNAME       cloudy-storm-4
 ;#ap-southeast        	IN     CNAME       funky-pizza-2 ; STOPPED 18/10/2011
 ;#us-west             	IN     CNAME       heroic-mosquito-2 ; STOPPED 18/11/2011
 
