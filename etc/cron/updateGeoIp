@@ -1,5 +1,3 @@
 #!/bin/bash
 
-
-#execute
-/chroot/named/updateGeoIP.sh
+sh /chroot/named/updateGeoIP.sh
