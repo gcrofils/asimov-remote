@@ -19,7 +19,7 @@ class Bind < Server::Base
      geoIP = File.join('/', 'chroot', 'named', 'usr', 'local', 'share', 'GeoIP')
      FileUtils.mkdir_p geoIP
      system ('sh /etc/cron.monthly/updateGeoIp')
-     FileUtils.cp '/usr/local/share/GeoIP/GeoIP.dat', File.join(geoIP, 'GeoIP.dat'), :force => true
+     FileUtils.cp '/usr/local/share/GeoIP/GeoIP.dat', File.join(geoIP, 'GeoIP.dat')
      system ('sh /chroot/named.perms')
   end
 end
