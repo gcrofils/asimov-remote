@@ -24,7 +24,7 @@ cloudy-storm-5        	IN      A     	175.41.255.24		; EC2 AP-NorthEast
 ;# others
 
 ;funky-pizza-2		        IN	A	122.248.236.130		; EC2 AP-SouthEast STOPPED 18/10/2011
-heavy-waterfall-3	      IN	A	122.248.253.86		; EC2 AP-SouthEast
+heavy-waterfall-4	      IN	A	122.248.253.86		; EC2 AP-SouthEast
 ;crispy-nuts-1         	IN  A 175.41.255.66 		; EC2 AP-NorthEast STOPPED 18/10/2011
 dirty-caffeine-5      	IN  A 79.125.123.65		; EC2 Europe
 clumsy-burst-1		      IN	A	46.137.85.114		; EC2 Europe
