@@ -3,10 +3,6 @@ $include "common/soa.dns";
 $include "common/mx_google.dns";
 
 $include "common/a_heroku.dns";
-
-jobboard            IN    A         213.186.33.5
-
-demo                IN    CNAME     demo.secondbureau.com.
                           
 $include "common/cname_base.dns";
 

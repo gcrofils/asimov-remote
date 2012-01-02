@@ -4,10 +4,8 @@ $include "common/mx_google.dns";
 
 $include "common/a_proxy.dns";
              
-jobboard            IN    A         213.186.33.5
-
-demo                IN    CNAME     demo.secondbureau.com.
-             
 $include "common/cname_base.dns";
+
+google17e3e581444e3c7d  IN  CNAME   google.com.
 
 google._domainkey IN TXT "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCexcsRMSpW2R5cH3H/cx1b8jrJDmN0Ys5o4kdc4vf4bpFg5VOFWyp96P9+CYQ0NkkilzbGA5CgE6M5Gy8yys5lHlI5KLFS/0ymbjm7YXQ5u7XhEUcXwKuA0ODyQNvuGX/qJUmm54UAIE5gdI3LEx4HACj/2EhKQFVMbmbRY5fIrQIDAQAB"
