@@ -31,6 +31,7 @@ clumsy-burst-1		      IN	A	46.137.85.114		; EC2 Europe
 geeky-cloud-3		        IN	A	50.18.63.110		; EC2 US-West
 heroic-mosquito-2	      IN	A	50.18.176.201		; EC2 US-West
 rocky-millenium-2       IN  A 176.34.228.6  ; EC2 Europe
+happy-spirit-1		IN A 176.34.58.205 ; AP-Northeast
 
 ;######################
 ;#
@@ -52,7 +53,8 @@ ftp           		IN     CNAME      clumsy-burst-1     	; FTP
 dns           		IN     A      	  50.18.63.110      	; Primary DNS (No CNAME record !)
 ns0           		IN     A      	  122.248.253.86    	; Secondary DNS (No CNAME record !)
 ;git       		    IN     CNAME      crispy-nuts-1     	; Git Server
-atlas             IN     A          176.34.228.6
+atlas-eu		IN CNAME rocky-millenium-2 ; Atlas
+atlas-ap 		IN CNAME happy-spirit-1    ; Atlas
 
 ;# Heroku App on Ceda
 demo-utown      IN CNAME ar.herokuapp.com.
