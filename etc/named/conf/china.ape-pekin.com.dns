@@ -4,4 +4,4 @@ $include "common/mx_caffeine.dns";
 
 $include "common/a_proxy.dns";
 
-$include "common/cname_base.dns";
+www   IN CNAME ar.herokuapp.com.
