@@ -4,4 +4,6 @@ $include "common/mx_caffeine.dns";
 
 $include "common/a_heroku.dns";
 
+cn   IN CNAME ar.herokuapp.com.
+
 $include "common/cname_base.dns";
