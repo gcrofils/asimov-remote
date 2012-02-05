@@ -65,7 +65,7 @@ air   IN CNAME ar.herokuapp.com.
 
 ;# demos
 acapital IN A 50.18.155.172
-
+barrois IN A 176.34.187.29
 
 ;######################
 ;#
