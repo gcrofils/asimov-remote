@@ -67,13 +67,15 @@ air   IN CNAME ar.herokuapp.com.
 acapital IN A 50.18.155.172
 barrois IN A 176.34.187.29
 
+
 ;######################
 ;#
 ;# Office Server
 ;#
 ;######################
 
-thematrix     IN     A      61.135.155.215    ; Beijing
+thematrix     IN      A       61.135.155.215    ; Beijing
+matrix        IN      A       46.51.242.245     ; Beijing
 
 
 
