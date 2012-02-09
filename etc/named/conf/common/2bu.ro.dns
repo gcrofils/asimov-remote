@@ -30,8 +30,10 @@ dirty-caffeine-5      	IN  A 79.125.123.65		; EC2 Europe
 clumsy-burst-1		      IN	A	46.137.85.114		; EC2 Europe
 geeky-cloud-3		        IN	A	50.18.63.110		; EC2 US-West
 heroic-mosquito-2	      IN	A	50.18.176.201		; EC2 US-West
-rocky-millenium-2       IN  A 176.34.228.6  ; EC2 Europe
-happy-spirit-1		IN A 176.34.58.205 ; AP-Northeast
+rocky-millenium-2       IN  A 176.34.228.6    ; EC2 Europe
+happy-spirit-1		      IN  A 176.34.58.205   ; AP-Northeast
+windy-summer-1          IN  A 176.34.44.244   ; AP-Northeast
+worldly-wise-1          IN  A 176.34.44.244   ; AP-Northeast
 
 ;######################
 ;#
@@ -64,8 +66,8 @@ demo-crunchitforme   IN CNAME ar.herokuapp.com.
 air   IN CNAME ar.herokuapp.com.
 
 ;# demos
-acapital IN A 50.18.155.172
-barrois IN A 176.34.187.29
+;acapital IN A 50.18.155.172
+;barrois IN A 176.34.187.29
 
 
 ;######################
@@ -75,7 +77,8 @@ barrois IN A 176.34.187.29
 ;######################
 
 funky-factory-2   IN      A       61.135.155.215    ; Beijing
-matrix            IN      A       46.51.242.245     ; Tokyo
+matrix            IN CNAME   worldly-wise-1  ; Tokyo
+cc                IN CNAME   windy-summer-1  ; cruise control
 
 
 
