@@ -33,7 +33,7 @@ heroic-mosquito-2	      IN	A	50.18.176.201		; EC2 US-West
 rocky-millenium-2       IN  A 176.34.228.6    ; EC2 Europe
 happy-spirit-1		      IN  A 176.34.58.205   ; AP-Northeast
 windy-summer-1          IN  A 176.34.44.244   ; AP-Northeast
-worldly-wise-1          IN  A 176.34.44.244   ; AP-Northeast
+worldly-wise-1          IN  A 46.51.242.245   ; AP-Northeast
 
 ;######################
 ;#
