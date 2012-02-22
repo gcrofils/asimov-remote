@@ -34,6 +34,7 @@ rocky-millenium-2       IN  A 176.34.228.6    ; EC2 Europe
 happy-spirit-1		      IN  A 176.34.58.205   ; AP-Northeast
 windy-summer-1          IN  A 176.34.44.244   ; AP-Northeast
 worldly-wise-1          IN  A 46.51.242.245   ; AP-Northeast
+friendly-cthulhu-1      IN  A 176.34.116.214  ; EC2 Europe
 
 ;######################
 ;#
@@ -57,8 +58,9 @@ ns0           		IN     A      	  122.248.253.86    	; Secondary DNS (No CNAME re
 ;git       		    IN     CNAME      crispy-nuts-1     	; Git Server
 atlas-eu		IN CNAME rocky-millenium-2 ; Atlas
 atlas-ap 		IN CNAME happy-spirit-1    ; Atlas
+milizone    IN CNAME friendly-cthulhu-1
 
-;# Heroku App on Ceda
+;# Heroku App on Cedar
 demo-utown      IN CNAME ar.herokuapp.com.
 demo-jeu-maille IN CNAME ar.herokuapp.com.
 jeu-maille	IN CNAME ar.herokuapp.com.
