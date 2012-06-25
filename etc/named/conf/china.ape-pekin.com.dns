@@ -1,7 +1,0 @@
-$include "common/soa.dns";
-
-$include "common/mx_caffeine.dns";
-
-$include "common/a_proxy.dns";
-
-www   IN CNAME ar.herokuapp.com.
