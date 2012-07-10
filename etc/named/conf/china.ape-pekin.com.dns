@@ -1,7 +1,0 @@
-$include "common/soa.dns";
-
-$include "common/mx_caffeine.dns";
-
-$include "common/a_proxy.dns";
-
-$include "common/cname_base.dns";

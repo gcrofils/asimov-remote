@@ -18,19 +18,22 @@ $include "common/cname_base.dns";
 ;# Reminder : Http Proxy needs to be changed
 ;# in common/a_proxy.dns
 
-
 cloudy-storm-5        	IN      A     	175.41.255.24		; EC2 AP-NorthEast
 
 ;# others
 
-;funky-pizza-2		        IN	A	122.248.236.130		; EC2 AP-SouthEast STOPPED 18/10/2011
+;funky-pizza-2		      IN	A	122.248.236.130		; EC2 AP-SouthEast STOPPED 18/10/2011
 heavy-waterfall-4	      IN	A	122.248.253.86		; EC2 AP-SouthEast
 ;crispy-nuts-1         	IN  A 175.41.255.66 		; EC2 AP-NorthEast STOPPED 18/10/2011
-dirty-caffeine-5      	IN  A 79.125.123.65		; EC2 Europe
-clumsy-burst-1		      IN	A	46.137.85.114		; EC2 Europe
-geeky-cloud-3		        IN	A	50.18.63.110		; EC2 US-West
-heroic-mosquito-2	      IN	A	50.18.176.201		; EC2 US-West
-rocky-millenium-2       IN  A 176.34.228.6  ; EC2 Europe
+dirty-caffeine-5      	IN  A 79.125.123.65		  ; EC2 Europe
+clumsy-burst-1		      IN	A	46.137.85.114		  ; EC2 Europe
+geeky-cloud-3		        IN	A	50.18.63.110		  ; EC2 US-West
+heroic-mosquito-2	      IN	A	50.18.176.201		  ; EC2 US-West
+rocky-millenium-2       IN  A 176.34.228.6      ; EC2 Europe
+happy-spirit-1		      IN  A 176.34.58.205     ; AP-Northeast
+windy-summer-1          IN  A 176.34.44.244     ; AP-Northeast
+worldly-wise-1          IN  A 46.51.242.245     ; AP-Northeast
+friendly-cthulhu-1      IN  A 176.34.116.214    ; EC2 Europe
 
 ;######################
 ;#
@@ -41,27 +44,38 @@ rocky-millenium-2       IN  A 176.34.228.6  ; EC2 Europe
 ;# proxies
 
 ap-northeast        	IN     CNAME       cloudy-storm-5
-;#ap-southeast        	IN     CNAME       funky-pizza-2 ; STOPPED 18/10/2011
-;#us-west             	IN     CNAME       heroic-mosquito-2 ; STOPPED 18/11/2011
-
+;#ap-southeast        IN     CNAME       funky-pizza-2      ; STOPPED 18/10/2011
+;#us-west             IN     CNAME       heroic-mosquito-2  ; STOPPED 18/11/2011
 
 ;# Services
 
-caffeine      		IN     A      	  79.125.123.65     	; SMTP (No CNAME record !)
-ftp           		IN     CNAME      clumsy-burst-1     	; FTP
-dns           		IN     A      	  50.18.63.110      	; Primary DNS (No CNAME record !)
-ns0           		IN     A      	  122.248.253.86    	; Secondary DNS (No CNAME record !)
-;git       		    IN     CNAME      crispy-nuts-1     	; Git Server
-atlas             IN     A          176.34.228.6
+caffeine      		IN      A      	    79.125.123.65     	; SMTP (No CNAME record !)
+ftp           		IN      CNAME       clumsy-burst-1     	; FTP
+dns           		IN      A      	    50.18.63.110      	; Primary DNS (No CNAME record !)
+ns0           		IN      A      	    122.248.253.86    	; Secondary DNS (No CNAME record !)
+;git       		    IN      CNAME       crispy-nuts-1     	; Git Server
+atlas-eu		      IN      CNAME       rocky-millenium-2   ; Atlas
+atlas-ap 		      IN      CNAME       happy-spirit-1      ; Atlas
+milizone          IN      CNAME       friendly-cthulhu-1
 
-;# Heroku App on Ceda
-demo-utown      IN CNAME ar.herokuapp.com.
-demo-jeu-maille IN CNAME ar.herokuapp.com.
-jeu-maille	IN CNAME ar.herokuapp.com.
-demo-crunchitforme   IN CNAME ar.herokuapp.com.
+;# Heroku demo App on Cedar
 
-;# demos
-acapital IN A 50.18.155.172
+demo-utown            IN CNAME ar.herokuapp.com.
+demo-jeu-maille       IN CNAME ar.herokuapp.com.
+demo-crunchitforme    IN CNAME ar.herokuapp.com.
+demo-cfc              IN CNAME ar.herokuapp.com.
+demo-midas            IN CNAME ar.herokuapp.com.
+*.demo                IN CNAME ar.herokuapp.com.
+
+;# Heroku prod App on Cedar
+
+air                   IN CNAME ar.herokuapp.com.
+jeu-maille	          IN CNAME ar.herokuapp.com.
+money                 IN CNAME ar.herokuapp.com.
+
+;# autres demos
+;acapital IN A 50.18.155.172
+;barrois IN A 176.34.187.29
 
 
 ;######################
@@ -70,19 +84,6 @@ acapital IN A 50.18.155.172
 ;#
 ;######################
 
-thematrix     IN     A      61.135.155.215    ; Beijing
-
-
-
-
-;######################
-;#
-;# Archives
-;#
-;######################
-
-;#   ap           IN     A       175.41.149.177  (until 01/08/2011)
-
-;# dirty-caffeine-2     IN      CNAME     caffeine
-;# funky-pizza-1        IN      CNAME     caffeine
-;# heavy-waterfall-2	      IN	A	122.248.253.86		; EC2 AP-SouthEast (until 18/10/2011)
+funky-factory-2   IN      A       61.135.155.215    ; Beijing
+matrix            IN      CNAME   worldly-wise-1    ; Tokyo
+cc                IN      CNAME   windy-summer-1    ; cruise control
