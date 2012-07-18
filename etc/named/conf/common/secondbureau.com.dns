@@ -22,3 +22,4 @@ google._domainkey IN TXT "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKB
 
 comitefrancechine IN CNAME ar.herokuapp.com.
 www.comitefrancechine IN CNAME ar.herokuapp.com.
+acapital IN CNAME ar.herokuapp.com.
