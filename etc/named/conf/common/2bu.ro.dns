@@ -74,6 +74,9 @@ air                   IN CNAME ar.herokuapp.com.
 jeu-maille	          IN CNAME ar.herokuapp.com.
 money                 IN CNAME ar.herokuapp.com.
 
+;# Legacy app
+daryl                 IN CNAME production-daryl.heroku.com.
+
 ;# autres demos
 ;acapital IN A 50.18.155.172
 ;barrois IN A 176.34.187.29
