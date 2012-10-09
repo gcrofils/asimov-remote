@@ -1,2 +1,4 @@
 ap            IN     CNAME    ap-northeast.2bu.ro.
 www           IN     CNAME    ar.herokuapp.com.
+
+BSECGOPH6RE2  IN CNAME  gv-3AMI2L3H3L4L4ATMEIV33JX4RYVEJJCIDW4VOXWPMBWIXI6WVHNQ.domainverify.googlehosted.com.
