@@ -1,0 +1,7 @@
+$include "common/soa.dns";
+
+$include "common/mx_google.dns";
+
+@  IN     A      204.93.213.45
+
+www           IN     CNAME    wintersweet.myshopify.com.
