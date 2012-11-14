@@ -5,3 +5,5 @@ $include "common/mx_google.dns";
 @  IN     A      204.93.213.45
 
 www           IN     CNAME    wintersweet.myshopify.com.
+
+GRCNEJUOSXCI  IN    CNAME     gv-AAHOLMWCW5C2SHJZQYJUGPOR3UTDZTCDMUSDK3UK764XFBNTRWJA.domainverify.googlehosted.com.
