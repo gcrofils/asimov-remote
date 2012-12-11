@@ -1,0 +1,30 @@
+;www2	IN	CNAME	webcms2.alienor.net.
+;ftp		IN	CNAME	ftp.alienor.net.
+;ftp2	IN	CNAME	ftp.alienor.net.
+;fournisseurs IN CNAME webl1.alienor.net.
+;rapports      IN A 84.55.179.170
+;westt-net     IN CNAME price-induction.alwaysdata.net.
+;dgen-net      IN CNAME price-induction.alwaysdata.net.
+;www            IN CNAME price-induction.alwaysdata.net.
+;www.westt-net IN CNAME price-induction.alwaysdata.net.
+;@                IN A 178.32.28.117
+;ftp-commerciaux.price-induction.com IN A ftp.cluster006.ovh.net.
+;commerciaux.price-induction.com IN A web-0.alienor.net.
+;@      IN  MX  1	mx.alienor.net.
+
+
+$include "common/a_wwwizer.dns";
+
+@				IN		MX	1	mx.alienor.net.
+rapports      	IN 		A 		84.55.179.170		; fails because host not found (12/12/12)
+fournisseurs 	IN 		CNAME 	webl1.alienor.net.	; redirect to http://www.price-induction.com/fr/
+commerciaux		IN 		CNAME 	web-0.alienor.net.
+ftp				IN		CNAME	ftp.alienor.net.
+ftp2			IN		CNAME	ftp.alienor.net.
+ftp-commerciaux IN 		CNAME 	ftp.cluster006.ovh.net.
+
+dgen-net		IN		CNAME	www					; empty website (12/12/12)
+westt-net		IN		CNAME	www
+www.westt-net	IN 		CNAME 	www
+
+

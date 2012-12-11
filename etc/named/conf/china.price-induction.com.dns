@@ -1,0 +1,4 @@
+
+$include "global.price-induction.com.dns";
+
+www	IN CNAME ap-northeast.2bu.ro.
