@@ -12,6 +12,7 @@
 ;commerciaux.price-induction.com IN A web-0.alienor.net.
 ;@      IN  MX  1	mx.alienor.net.
 
+$include "common/soa.dns";
 
 $include "common/a_wwwizer.dns";
 
@@ -26,5 +27,3 @@ ftp-commerciaux IN 		CNAME 	ftp.cluster006.ovh.net.
 dgen-net		IN		CNAME	www					; empty website (12/12/12)
 westt-net		IN		CNAME	www
 www.westt-net	IN 		CNAME 	www
-
-
