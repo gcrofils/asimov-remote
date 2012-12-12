@@ -2,3 +2,4 @@
 $include "global.price-induction.com.dns";
 
 www	IN CNAME price-induction.alwaysdata.net.
+
