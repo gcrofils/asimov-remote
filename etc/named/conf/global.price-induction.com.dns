@@ -18,11 +18,14 @@ $include "common/a_wwwizer.dns";
 
 @				IN		MX	1	mx.alienor.net.
 rapports      	IN 		A 		84.55.179.170		; fails because host not found (12/12/12)
-fournisseurs 	IN 		CNAME 	webl1.alienor.net.	; redirect to http://www.price-induction.com/fr/
-commerciaux		IN 		CNAME 	web-0.alienor.net.
-ftp				IN		CNAME	ftp.alienor.net.
-ftp2			IN		CNAME	ftp.alienor.net.
+fournisseurs 	IN 		  CNAME 	webl1.alienor.net.	; redirect to http://www.price-induction.com/fr/
+commerciaux		IN 		  CNAME 	web-0.alienor.net.
+ftp				    IN		  CNAME	  ftp.alienor.net.
+ftp2			    IN		  CNAME	  ftp.alienor.net.
 ftp-commerciaux IN 		CNAME 	ftp.cluster006.ovh.net.
+pop           IN      CNAME   mail4.alienor.net.
+smtp          IN      CNAME   smtp.alienor.net.
+
 
 dgen-net		IN		CNAME	www					; empty website (12/12/12)
 westt-net		IN		CNAME	www
