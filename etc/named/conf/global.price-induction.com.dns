@@ -20,6 +20,7 @@ $include "common/a_wwwizer.dns";
 rapports      	IN 		A 		84.55.179.170		; fails because host not found (12/12/12)
 fournisseurs 	IN 		  CNAME 	webl1.alienor.net.	; redirect to http://www.price-induction.com/fr/
 commerciaux		IN 		  CNAME 	web-0.alienor.net.
+rco           IN      CNAME   commerciaux
 ftp				    IN		  CNAME	  ftp.alienor.net.
 ftp2			    IN		  CNAME	  ftp.alienor.net.
 ftp-commerciaux IN 		CNAME 	ftp.cluster006.ovh.net.
