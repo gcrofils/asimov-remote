@@ -1,0 +1,11 @@
+$include "common/soa.dns";
+
+$include "common/mx_caffeine.dns";
+
+gilles      IN  MX  1	caffeine.2bu.ro.
+tranxen     IN  MX  1	caffeine.2bu.ro.
+alain       IN  MX  1	caffeine.2bu.ro.
+amin        IN  MX  1	caffeine.2bu.ro.
+christiane  IN  MX  1	caffeine.2bu.ro.
+emilie      IN  MX  1	caffeine.2bu.ro.
+m           IN  MX  1	caffeine.2bu.ro.
