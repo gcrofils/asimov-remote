@@ -18,8 +18,12 @@ jobboard            IN    TXT       "t|Second Bureau | Job Board"
 
 google._domainkey IN TXT "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCXYuS5eawhHY4UgXCgp+QKwN0UrgXpppKEzlfxHDDCMAViJtdSdh8l99MNQRciPsxLiBdEgdSk6LmIKtjYBHeu6IYSK2JJdRkdP/GXQzustWKBbYCFNkpdgY5b7QibNveucjRk+UkJQGxAWw7HOesCUEFBpiGpRSXVTjk1jk/3zQIDAQAB"
 
+20130616084141.pm._domainkey IN TXT "k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCC4rwB0v0wmOevrP6qedTP3yhKnP6w7JdLP8VmZNtrVwpOfNr4HGcPs82SfY3+C+KrGpPX6wV9icXaOBSCeV5FUkuSEJKE5fsN7L4H10ZELN8OUAV0aLMoqXRgLx8nhBaRVaqhqxARNCcgRmh5Dmz13uuKNxa6xluI7q7aagr8PQIDAQAB"
+
+@ IN TXT "v=spf1 a mx include:spf.mtasv.net ~all"
 
 
-comitefrancechine IN CNAME ar.herokuapp.com.
-www.comitefrancechine IN CNAME ar.herokuapp.com.
+comitefrancechine 		IN CNAME ar.herokuapp.com.
+cfc 					IN CNAME ar.herokuapp.com.
+www.comitefrancechine 	IN CNAME ar.herokuapp.com.
 acapital IN CNAME ar.herokuapp.com.
