@@ -1,0 +1,15 @@
+$include "common/soa.dns";
+
+;$include "common/a_wwwizer.dns";
+@ 			IN A 		88.190.253.247
+
+;* 			IN CNAME 	pf7-web.online.net.
+legacy		IN CNAME	pf7-web.online.net.
+*        	IN CNAME    ar.herokuapp.com.
+
+@ 			IN MX 20 	mx-cache.online.net.
+@ 			IN MX 10 	mx.online.net.
+
+comfr 		IN CNAME 	pf8-mysql.online.net.
+comitefr 	IN CNAME 	pf12-mysql.online.net.
+comiteprod 	IN CNAME 	pf12-mysql.online.net.
