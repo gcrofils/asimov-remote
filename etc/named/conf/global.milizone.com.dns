@@ -9,3 +9,6 @@ amin        IN  MX  1	caffeine.2bu.ro.
 christiane  IN  MX  1	caffeine.2bu.ro.
 emilie      IN  MX  1	caffeine.2bu.ro.
 m           IN  MX  1	caffeine.2bu.ro.
+
+guignes             IN    A         88.179.132.143
+flaverina           IN    A         82.244.129.83
