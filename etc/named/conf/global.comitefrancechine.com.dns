@@ -1,0 +1,21 @@
+$include "common/soa.dns";
+
+$include "common/a_wwwizer.dns";
+;@ 			IN A 		88.190.253.247
+
+;* 			IN CNAME 	pf7-web.online.net.
+legacy		IN CNAME	pf7-web.online.net.
+*        	IN CNAME    ar.herokuapp.com.
+
+;@ 			IN MX 20 	mx-cache.online.net.
+;@ 			IN MX 10 	mx.online.net.
+$include "common/mx_caffeine.dns";
+
+comfr 		IN CNAME 	pf8-mysql.online.net.
+comitefr 	IN CNAME 	pf12-mysql.online.net.
+comiteprod 	IN CNAME 	pf12-mysql.online.net.
+
+20130616100102.pm._domainkey IN TXT ("k=rsa;"
+"p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCOkfQrD1Qpp3k0dbiKo1hf0O6QGvYrer5bOVYsk3SNlfjeUR1+bBFwEvZz3FmqOAfMgTYUWOzAWO82LH5IaaXlTctcyIt2L15OXJ2dYMrgQGpSRBgAfKeUEnD5FajJomXn3Do8OQDmQz8LaQL30t2qdrrIRTeuizGb9m7vHsYFQQIDAQAB")
+
+@ IN TXT "v=spf1 a mx include:spf.mtasv.net ~all"
