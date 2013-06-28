@@ -2,8 +2,8 @@ $include "common/soa.dns";
 
 $include "common/mx_caffeine.dns";
 
-*             IN  A     199.34.228.56
-www           IN  CNAME 199.34.228.56
+@             IN  A     199.34.228.56
+www           IN  A     199.34.228.56
 blog          IN  CNAME ghs.google.com.
 NHUH52SXKDJH  IN  CNAME gv-O5CYLMUOVLE5WH.dv.googlehosted.com.
 
