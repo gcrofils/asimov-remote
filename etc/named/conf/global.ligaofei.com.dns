@@ -6,4 +6,5 @@ $include "common/mx_caffeine.dns";
 www           IN  A     199.34.228.56
 blog          IN  CNAME ghs.google.com.
 NHUH52SXKDJH  IN  CNAME gv-O5CYLMUOVLE5WH.dv.googlehosted.com.
+img           IN  CNAME ar.herokuapp.com.
 
