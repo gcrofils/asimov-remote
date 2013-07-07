@@ -72,6 +72,7 @@ demo-midas            IN CNAME ar.herokuapp.com.
 ;# Heroku prod App on Cedar
 
 air                   IN CNAME ar.herokuapp.com.
+dashboard             IN CNAME ar.herokuapp.com.
 jeu-maille	          IN CNAME ar.herokuapp.com.
 money                 IN CNAME ar.herokuapp.com.
 
