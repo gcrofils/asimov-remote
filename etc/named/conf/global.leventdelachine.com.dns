@@ -7,4 +7,4 @@ $include "common/a_wwwizer.dns";
 $include "common/cname_base.dns";
 
 api-demo    IN CNAME demo-favonius-api.herokuapp.com.
-api         IN CNAME favonius-api.herokuapp.com.
+api         IN CNAME production-favonius-api.herokuapp.com.
