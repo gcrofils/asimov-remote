@@ -4,6 +4,8 @@ $include "common/mx_google.dns";
 
 $include "common/a_proxy.dns";
 
-$include "common/cname_base.dns";
+;$include "common/cname_base.dns";
+ap            IN     CNAME      ap-northeast.2bu.ro.
+www           IN     CNAME      production-phoenix.herokuapp.com.
              
 $include "common/secondbureau.com.dns";
