@@ -2,7 +2,8 @@ $include "common/soa.dns";
 
 $include "common/mx_google.dns";
 
-$include "common/a_proxy.dns";
+;$include "common/a_proxy.dns";
+$include "common/a_wwwizer.dns";
 
 ;$include "common/cname_base.dns";
 ap            IN     CNAME      ap-northeast.2bu.ro.
