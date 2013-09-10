@@ -12,7 +12,7 @@ google17e3e581444e3c7d  IN    CNAME     google.com.
 mail                    IN    CNAME     ghs.google.com.
 sites                   IN    CNAME     ghs.google.com.
 cdn                     IN    CNAME     s3.amazonaws.com.
-cdn-eu                  IN    CNAME     cdn-eu.secondbureau.com.s3.amazonaws.com.
+cdn-eu                  IN    CNAME     cdn-eu.secondbureau.com.s3-external-3.amazonaws.com.
 
 jobboard            IN    TXT       "d|We need you ! (maybe)"
 jobboard            IN    TXT       "t|Second Bureau | Job Board"
