@@ -14,6 +14,8 @@ sites                   IN    CNAME     ghs.google.com.
 cdn                     IN    CNAME     s3.amazonaws.com.
 cdn-eu                  IN    CNAME     cdn-eu.secondbureau.com.s3-eu-west-1.amazonaws.com.
 
+v3                      IN    CNAME     production-funkyfactory3.herokuapp.com.
+
 jobboard            IN    TXT       "d|We need you ! (maybe)"
 jobboard            IN    TXT       "t|Second Bureau | Job Board"
 
