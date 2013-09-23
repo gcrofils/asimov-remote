@@ -8,3 +8,5 @@ $include "common/cname_base.dns";
 
 api-demo    IN CNAME demo-favonius-api.herokuapp.com.
 api         IN CNAME production-favonius-api.herokuapp.com.
+
+cdn-ap1                  IN    CNAME     cdn-ap1.leventdelachine.com.s3-ap-northeast-1-w.amazonaws.com.
