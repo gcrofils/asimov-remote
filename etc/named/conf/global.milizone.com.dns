@@ -12,3 +12,5 @@ m           IN  MX  1	caffeine.2bu.ro.
 
 guignes             IN    A         88.179.132.143
 flaverina           IN    A         82.244.129.83
+
+atlas-eu-west-1 IN A 54.238.154.190
