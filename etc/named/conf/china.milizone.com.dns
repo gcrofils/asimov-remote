@@ -1,0 +1,3 @@
+$include "global.milizone.com.dns";
+
+atlas cname atlas-ap-northeast-1
