@@ -18,7 +18,7 @@ $include "common/cname_base.dns";
 ;# Reminder : Http Proxy needs to be changed
 ;# in common/a_proxy.dns
 
-cloudy-storm-5        	IN      A     	54.250.120.128		; EC2 AP-NorthEast
+cloudy-storm-5        	IN      A     	54.248.93.134		; EC2 AP-NorthEast
 
 ;# others
 
