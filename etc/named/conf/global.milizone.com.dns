@@ -17,5 +17,5 @@ flaverina           IN    A         82.244.129.83
 atlas-ap-northeast-1 IN A 54.238.154.190
 atlas-eu-west-1 IN A 54.229.226.89
 
-galleries.milizone.com IN CNAME s3-ap-northeast-1.amazonaws.com.
-gallery.milizone.com IN CNAME ar.herokuapp.com.
+galleries IN CNAME s3-ap-northeast-1.amazonaws.com.
+gallery IN CNAME ar.herokuapp.com.
