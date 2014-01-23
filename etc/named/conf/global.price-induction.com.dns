@@ -31,3 +31,6 @@ smtp          IN      CNAME   smtp.alienor.net.
 dgen-net		IN		CNAME	www					; empty website (12/12/12)
 westt-net		IN		CNAME	www
 www.westt-net	IN 		CNAME 	www
+
+
+@ IN TXT "MS=ms72357738"
