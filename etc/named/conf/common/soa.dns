@@ -1,7 +1,7 @@
 $TTL 21600
 @     IN     SOA    dns.2bu.ro.     hostmaster (
 
-                    2014012401 ; serial
+                    2014021901 ; serial
 
                     21600      ; refresh after 6 hours
                     3600       ; retry after 1 hour
